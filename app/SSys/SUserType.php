@@ -1,0 +1,15 @@
+<?php namespace App\SSys;
+
+use Illuminate\Database\Eloquent\Model;
+
+class SUserType extends Model
+{
+  protected $primaryKey = 'id_type';
+  protected $table = "syss_user_types";
+  protected $fillable = ['id_type','name'];
+
+  public function user()
+  {
+      return $this->hasMany('App\User');
+  }
+}
