@@ -15,8 +15,10 @@ class SProductionController extends Controller
 
     public function __construct()
     {
-       $this->middleware('mdprivilege:'.\Config::get('constants.VIEW_CODE.PRODUCTION'));
+       $this->middleware('mdmodule:'.\Config::get('constants.MODULES.MMS'));
+
        $this->middleware('mdmenu:'.\Config::get('constants.MODULES.MMS'));
+
        $this->oUtil = new SUtil();
        $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id_user, \Config::get('constants.VIEW_CODE.PRODUCTION'));
 

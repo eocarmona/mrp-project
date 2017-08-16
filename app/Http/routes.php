@@ -100,7 +100,7 @@ Route::group(['middleware' => ['auth']], function() {
 //****************************************/ Manufacturing /*************************
 		Route::get('/mms/home',[
 			'as' => 'mms.home',
-			'uses' => 'SQMS\SQualityController@Home'
+			'uses' => 'SMMS\SProductionController@Home'
 		]);
 		Route::resource('mms','SMMS\SProductionController');
 
@@ -122,7 +122,7 @@ Route::group(['middleware' => ['auth']], function() {
 //****************************************/ Shipments /*************************
 		Route::get('/tms/home',[
 			'as' => 'tms.home',
-			'uses' => 'SWMS\SWarehousesController@Home'
+			'uses' => 'STMS\SShipmentsController@Home'
 		]);
 		Route::resource('tms','STMS\SShipmentsController');
 

@@ -4,7 +4,7 @@
 
 	return [
 
-		'SYSTEM' => 'Manufacturing Resources Planning'
+		'SYSTEM' => 'Manufacturing Resources Planning',
 		'HOME' => 'Inicio',
 		'HELP' => 'Ayuda',
 		'EXIT' => 'Salir',

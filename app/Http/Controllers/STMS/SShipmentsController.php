@@ -15,8 +15,10 @@ class SShipmentsController extends Controller
 
     public function __construct()
     {
-       $this->middleware('mdprivilege:'.\Config::get('constants.VIEW_CODE.SHIPMENTS'));
+       $this->middleware('mdmodule:'.\Config::get('constants.MODULES.TMS'));
+
        $this->middleware('mdmenu:'.\Config::get('constants.MODULES.TMS'));
+       
        $this->oUtil = new SUtil();
        $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.SHIPMENTS'));
 

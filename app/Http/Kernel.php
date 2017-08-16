@@ -34,6 +34,7 @@ class Kernel extends HttpKernel
         'mdadmin' => \App\Http\Middleware\SMAdmin::class,
         'mdprivilege' => \App\Http\Middleware\SMPrivilege::class,
         'mdcompany' => \App\Http\Middleware\SMCompany::class,
+        'mdmodule' => \App\Http\Middleware\SMModule::class,
         'mdmenu' => \App\Http\Middleware\SMMenu::class,
     ];
 }

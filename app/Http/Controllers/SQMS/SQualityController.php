@@ -15,8 +15,10 @@ class SQualityController extends Controller
 
     public function __construct()
     {
-       $this->middleware('mdprivilege:'.\Config::get('constants.VIEW_CODE.QUALITY'));
+       $this->middleware('mdmodule:'.\Config::get('constants.MODULES.QMS'));
+
        $this->middleware('mdmenu:'.\Config::get('constants.MODULES.QMS'));
+       
        $this->oUtil = new SUtil();
        $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.QUALITY'));
 

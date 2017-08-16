@@ -15,8 +15,10 @@ class SWarehousesController extends Controller
 
     public function __construct()
     {
-       $this->middleware('mdprivilege:'.\Config::get('constants.VIEW_CODE.WAREHOUSES'));
+       $this->middleware('mdmodule:'.\Config::get('constants.MODULES.WMS'));
+
        $this->middleware('mdmenu:'.\Config::get('constants.MODULES.WMS'));
+
        $this->oUtil = new SUtil();
        $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id_user, \Config::get('constants.VIEW_CODE.WAREHOUSES'));
 

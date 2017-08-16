@@ -29,6 +29,12 @@ return [
   'TP_USER' => ['ADMIN' => '1',
                   'DEFAULT' => '2'],
 
+  'TP_PERMISSION' => [
+                  'MODULE' => '1',
+                  'BRANCH' => '2',
+                  'WAREHOUSE' => '3',
+                ],
+
 	'PRIVILEGES' => ['NA' => '1',
                     'READER' => '2',
                     'AUTHOR' => '3',
