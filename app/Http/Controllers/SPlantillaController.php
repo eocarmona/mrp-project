@@ -14,7 +14,7 @@ class SPlantillaController extends Controller
      */
     public function index()
     {
-        return view('front.index');
+        return view('front.admin');
     }
     public function captura()
     {

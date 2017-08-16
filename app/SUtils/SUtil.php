@@ -102,7 +102,7 @@ class SUtil {
   public function canAuthorEdit($iPrivilegeId, $iCreatedBy)
   {
       return \Config::get('constants.PRIVILEGES.AUTHOR') == $iPrivilegeId
-                  && $iCreatedBy == \Auth::user()->id_user;
+                  && $iCreatedBy == \Auth::user()->id;
   }
 
   /**

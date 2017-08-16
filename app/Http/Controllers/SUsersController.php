@@ -19,12 +19,11 @@ class SUsersController extends Controller
 
     public function __construct()
     {
-         $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW')','.\Config::get('constants.VIEW_CODE.USERS'));
-         #$this->middleware('mdcompany');
+         $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW').','.\Config::get('constants.VIEW_CODE.USERS'));
          $this->middleware('mdadmin');
 
          $this->oUtil = new SUtil();
-         $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id_user, \Config::get('constants.VIEW_CODE.USERS'));
+         $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.USERS'));
 
          $this->iFilter = \Config::get('constants.FILTER.ACTIVES');
     }
@@ -74,7 +73,7 @@ class SUsersController extends Controller
     {
         $user = new User($request->all());
         $user->password = bcrypt($request->password);
-        $user->created_by_id =\Auth::user()->id_user;
+        $user->created_by_id =\Auth::user()->id;
         $user->save();
         Flash::success("Se ha registrado ".$user->username. " de forma exitosa!");
 
@@ -126,7 +125,7 @@ class SUsersController extends Controller
     {
         $user = User::find($id);
         $user->fill($request->all());
-        $user->updated_by_id = \Auth::user()->id_user;
+        $user->updated_by_id = \Auth::user()->id;
         $user->save();
 
         Flash::warning('El usuario'  . $user->username . ' ha sido editado con exito');
@@ -160,7 +159,7 @@ class SUsersController extends Controller
         $user = User::find($id);
         $user->fill($request->all());
         $user->is_deleted = \Config::get('constants.STATUS.DEL');
-        $user->updated_by_id = \Auth::user()->id_user;
+        $user->updated_by_id = \Auth::user()->id;
 
         $user->save();
         #$user->delete();

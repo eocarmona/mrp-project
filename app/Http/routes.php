@@ -31,8 +31,8 @@ Route::group(['middleware' => ['auth']], function() {
 //****************************************/ Admin/*************************
 	Route::group(['middleware' => ['mdadmin']], function() {
 
-		Route::get('/main',[
-			'as' => 'Plantilla.index',
+		Route::get('/admin',[
+			'as' => 'plantilla.admin',
 			'uses' => 'SPlantillaController@index'
 		]);
 

@@ -20,7 +20,7 @@
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 							@if (\Auth::user()->user_type_id == \Config::get('constants.TP_USER.ADMIN'))
 								<li>
-				            <a href="{{ route('Plantilla.index') }}">Administrar</a>
+				            <a href="{{ route('plantilla.admin') }}">Administrar</a>
 				        </li>
 							@endif
 				        <li>

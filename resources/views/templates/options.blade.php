@@ -24,10 +24,16 @@
 		<span class="sr-only">Toggle Dropdown</span>
 	</button>
 	<ul style="visibility: {{ App\SUtils\SValidation::isRendered(\Config::get('constants.OPERATION.EDIT'), $actualUserPermission, $v_created_by) }};" class="dropdown-menu" role="menu">
-		@if ($oRegistry->is_deleted == \Config::get('constants.STATUS.DEL') && App\SUtils\SValidation::isRenderedB(\Config::get('constants.OPERATION.DEL'), $actualUserPermission, $v_created_by))
-			<li><a href="{{ route($sRoute.'.activate', $v_id) }}"><i class="glyphicon glyphicon-ok-sign"></i>&nbsp;{{ trans('userinterface.buttons.ACTIVATE') }}</a></li>
+		@if ($oRegistry->is_deleted == \Config::get('constants.STATUS.DEL') &&
+																	App\SUtils\SValidation::isRenderedB(\Config::get('constants.OPERATION.DEL'), $actualUserPermission, $v_created_by))
+			<li>
+				<a href="{{ route($sRoute.'.activate', $v_id) }}">
+					<i class="glyphicon glyphicon-ok-sign"></i>
+					&nbsp;{{ trans('userinterface.buttons.ACTIVATE') }}
+				</a>
+			</li>
+			<li class="divider"></li>
 		@endif
-		<li class="divider"></li>
 		<li><a href=""><i class="glyphicon glyphicon-duplicate"></i>&nbsp;{{ trans('userinterface.buttons.DUPLICATE') }}</a></li>
 	</ul>
 </div>

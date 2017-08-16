@@ -16,7 +16,7 @@ class SPermissionsController extends Controller
 
       public function __construct()
       {
-           $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW')','.\Config::get('constants.VIEW_CODE.PERMISSIONS'));
+           $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW').','.\Config::get('constants.VIEW_CODE.PERMISSIONS'));
            $this->oUtil = new SUtil();
            $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.PERMISSIONS'));
 

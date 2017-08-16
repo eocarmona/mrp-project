@@ -17,7 +17,7 @@ class SUserCompanyController extends Controller
 
     public function __construct()
     {
-       $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW')','.\Config::get('constants.VIEW_CODE.ACCESS'));
+       $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW').','.\Config::get('constants.VIEW_CODE.ACCESS'));
        $this->oUtil = new SUtil();
        $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.ACCESS'));
 
@@ -54,7 +54,7 @@ class SUserCompanyController extends Controller
     {
       if ($this->oUtil->canCreate($this->oCurrentUserPermission->privilege_id))
         {
-          $users = SUser::orderBy('username', 'ASC')->lists('username', 'id_user');
+          $users = SUser::orderBy('username', 'ASC')->lists('username', 'id');
           $companies = SCompany::orderBy('name', 'ASC')->lists('name', 'id_company');
 
           return view('userCompany.createEdit')
@@ -111,7 +111,7 @@ class SUserCompanyController extends Controller
               $assignament->user;
               $userCompany->company;
 
-              $users = SUser::orderBy('username', 'ASC')->lists('username', 'id_user');
+              $users = SUser::orderBy('username', 'ASC')->lists('username', 'id');
               $companies = SCompany::orderBy('name', 'ASC')->lists('name', 'id_company');
 
               return view('userCompany.createEdit')

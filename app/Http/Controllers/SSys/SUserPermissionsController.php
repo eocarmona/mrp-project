@@ -19,8 +19,8 @@ class SUserPermissionsController extends Controller
 
   public function __construct()
   {
-       $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW')','.\Config::get('constants.VIEW_CODE.ASSIGNAMENTS'));
-       
+       $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW').','.\Config::get('constants.VIEW_CODE.ASSIGNAMENTS'));
+
        $this->oUtil = new SUtil();
        $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.ASSIGNAMENTS'));
 
@@ -58,7 +58,7 @@ class SUserPermissionsController extends Controller
     {
       if ($this->oUtil->canCreate($this->oCurrentUserPermission->privilege_id))
         {
-          $users = User::orderBy('username', 'ASC')->lists('username', 'id_user');
+          $users = User::orderBy('username', 'ASC')->lists('username', 'id');
           $permissions = SPermission::orderBy('name', 'ASC')->lists('name', 'id_permission');
           $privileges = SPrivilege::orderBy('name', 'ASC')->lists('name', 'id_privilege');
 
@@ -118,7 +118,7 @@ class SUserPermissionsController extends Controller
           $userPermission->permission;
           $userPermission->privilege;
 
-          $users = User::orderBy('username', 'ASC')->lists('username', 'id_user');
+          $users = User::orderBy('username', 'ASC')->lists('username', 'id');
           $permissions = SPermission::orderBy('name', 'ASC')->lists('name', 'id_permission');
           $privileges = SPrivilege::orderBy('id', 'ASC')->lists('name', 'id_privilege');
 

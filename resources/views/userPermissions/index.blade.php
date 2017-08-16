@@ -18,17 +18,10 @@
 					<td>{{ $userPermission->permission->name }}</td>
 					<td>{{ $userPermission->privilege->name }}</td>
 					<td>
-						@if ($userPermission->is_deleted == \Config::get('constants.STATUS.INACTIVE'))
-								<span class="label label-success">{{ trans('userinterface.labels.INACTIVE') }}</span>
-						@else
-								<span class="label label-danger">{{ trans('userinterface.labels.ACTIVE') }}</span>
-						@endif
-					</td>
-					<td>
 						<?php
 								$oRegistry = $userPermission;
-								$sRoute = 'assignaments';
-								$iRegistryId = $privilege->id_privilege;
+								$sRoute = 'userPermissions';
+								$iRegistryId = $userPermission->id_privilege;
 						?>
 						@include('templates.options')
 					</td>
