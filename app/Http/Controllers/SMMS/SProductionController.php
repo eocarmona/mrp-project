@@ -16,6 +16,7 @@ class SProductionController extends Controller
     public function __construct()
     {
        $this->middleware('mdprivilege:'.\Config::get('constants.VIEW_CODE.PRODUCTION'));
+       $this->middleware('mdmenu:'.\Config::get('constants.MODULES.MMS'));
        $this->oUtil = new SUtil();
        $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id_user, \Config::get('constants.VIEW_CODE.PRODUCTION'));
 
@@ -27,39 +28,12 @@ class SProductionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function home()
     {
-      $items = [
-            ' '             => [],
-            'home'          => [],
-            'about'         => [],
-            'contact-us'    => [],
-            'login'         => [],
-            'register'      => [],
-            'options'       => ['submenu' => [
-                                    'about'     => [],
-                                    'company'   => []
-                                    ]
-                                ]
-        ];
 
-      $sClassNav = 'navbar-orange';
+        $sClassNav = 'navbar-blue';
 
-      return view('mms.index', compact('items'))->with('sClassNav', $sClassNav);
-      /*
-      $this->iFilter = $request->filter == null ? \Config::get('constants.FILTER.ACTIVES') : $request->filter;
-      $access = Access::Search($this->iFilter)->orderBy('id', 'ASC')->paginate(4);
-
-      $access->each(function($access) {
-        $access->user;
-        $access->company;
-      });
-
-      return view('access.index')
-                          ->with('access', $access)
-                          ->with('actualAssignament', $this->oCurrentUserPermission)
-                          ->with('iFilter', $this->iFilter);
-      */
+        return view('wms.index')->with('sClassNav', $sClassNav);
     }
 
     /**

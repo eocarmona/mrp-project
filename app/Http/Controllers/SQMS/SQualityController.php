@@ -16,6 +16,7 @@ class SQualityController extends Controller
     public function __construct()
     {
        $this->middleware('mdprivilege:'.\Config::get('constants.VIEW_CODE.QUALITY'));
+       $this->middleware('mdmenu:'.\Config::get('constants.MODULES.QMS'));
        $this->oUtil = new SUtil();
        $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.QUALITY'));
 
@@ -29,23 +30,10 @@ class SQualityController extends Controller
      */
     public function home()
     {
-      $items = [
-            ' '             => [],
-            'home'          => ['route' => 'Plantilla.index'],
-            'about'         => ['route' => 'start'],
-            'contact-us'    => [],
-            'login'         => [],
-            'register'      => [],
-            'options'       => ['submenu' => [
-                                    'about'     => [],
-                                    'company'   => []
-                                    ]
-                                ]
-        ];
 
-        $sClassNav = 'navbar-blue-light';
+        $sClassNav = 'navbar-orange';
 
-        return view('qms.index', compact('items'))->with('sClassNav', $sClassNav);
+        return view('wms.index')->with('sClassNav', $sClassNav);
     }
 
     /**

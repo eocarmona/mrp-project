@@ -30,25 +30,11 @@ class SWarehousesController extends Controller
      */
     public function home()
     {
-      $items = [
-            ' '             => [],
-            trans('menus.HOME')                   => ['route' => 'wms.home'],
-            trans('menus.wms.CATALOGUES')   => ['route' => 'start'],
-            trans('menus.wms.WAREHOUSES')    => [],
-            trans('menus.wms.INVENTORY')    => [],
-            trans('menus.wms.REPORTS')  =>
-                                    ['submenu' => [
-                                      trans('menus.wms.REPORT_STK')     => [],
-                                      trans('menus.wms.REPORT_INV')   => [],
-                                    ]
-                                ],
-            trans('menus.HELP')    => [],
-        ];
 
-        $sClassNav = 'navbar-blue';
+        $sClassNav = 'navbar-green';
 
-        return view('wms.index', compact('items'))->with('sClassNav', $sClassNav);
-   }
+        return view('wms.index')->with('sClassNav', $sClassNav);
+    }
 
 
     /**

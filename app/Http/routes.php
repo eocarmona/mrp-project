@@ -13,6 +13,7 @@
 
 Route::group(['middleware' => ['auth']], function() {
 
+//****************************************/ Start/*************************
 	Route::get('/', [
 		'uses' => 'SPlantillaController@index'
 	]);
@@ -27,6 +28,7 @@ Route::group(['middleware' => ['auth']], function() {
 		'uses' => 'SSys\SStartController@GetIn'
 	]);
 
+//****************************************/ Admin/*************************
 	Route::group(['middleware' => ['mdadmin']], function() {
 
 		Route::get('/main',[
@@ -86,29 +88,44 @@ Route::group(['middleware' => ['auth']], function() {
 
 	});
 
+//****************************************/ Company /*************************
+
 	Route::group(['middleware' => ['mdcompany']], function() {
 
-		Route::get('/wms/home',[
-			'as' => 'wms.home',
-			'uses' => 'SWMS\SWarehousesController@Home'
+		Route::get('/modules',[
+			'as' => 'start.selmod',
+			'uses' => 'SSys\SStartController@SelectModule'
 		]);
-		Route::resource('wms','SWMS\SWarehousesController');
 
+//****************************************/ Manufacturing /*************************
+		Route::get('/mms/home',[
+			'as' => 'mms.home',
+			'uses' => 'SQMS\SQualityController@Home'
+		]);
 		Route::resource('mms','SMMS\SProductionController');
 
+//****************************************/ Quality /*************************
 		Route::get('/qms/home',[
 			'as' => 'qms.home',
 			'uses' => 'SQMS\SQualityController@Home'
 		]);
 		Route::resource('qms','SQMS\SQualityController');
 
+//****************************************/ Warehouses /*************************
+		Route::get('/wms/home',[
+			'as' => 'wms.home',
+			'uses' => 'SWMS\SWarehousesController@Home'
+		]);
+		Route::resource('wms','SWMS\SWarehousesController');
 
+
+//****************************************/ Shipments /*************************
+		Route::get('/tms/home',[
+			'as' => 'tms.home',
+			'uses' => 'SWMS\SWarehousesController@Home'
+		]);
 		Route::resource('tms','STMS\SShipmentsController');
 
-		Route::get('/modules',[
-			'as' => 'start.selmod',
-			'uses' => 'SSys\SStartController@SelectModule'
-		]);
 
 	});
 });

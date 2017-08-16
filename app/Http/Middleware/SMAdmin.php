@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
-class SMDAdmin
+class SMAdmin
 {
     /**
      * Handle an incoming request.

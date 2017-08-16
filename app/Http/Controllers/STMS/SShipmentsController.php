@@ -16,6 +16,7 @@ class SShipmentsController extends Controller
     public function __construct()
     {
        $this->middleware('mdprivilege:'.\Config::get('constants.VIEW_CODE.SHIPMENTS'));
+       $this->middleware('mdmenu:'.\Config::get('constants.MODULES.TMS'));
        $this->oUtil = new SUtil();
        $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.SHIPMENTS'));
 
@@ -27,27 +28,18 @@ class SShipmentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-      $items = [
-            ' '             => [],
-            'home'          => ['route' => 'Plantilla.index'],
-            'about'         => ['route' => 'start'],
-            'contact-us'    => [],
-            'login'         => [],
-            'register'      => [],
-            'options'       => ['submenu' => [
-                                    'about'     => [],
-                                    'company'   => []
-                                    ]
-                                ]
-        ];
+     /**
+      * Display a listing of the resource.
+      *
+      * @return \Illuminate\Http\Response
+      */
+     public function home()
+     {
 
-        $sClassNav = 'navbar-green';
+         $sClassNav = 'navbar-blue-light';
 
-        return view('tms.index', compact('items'))->with('sClassNav', $sClassNav);
-
-    }
+         return view('wms.index')->with('sClassNav', $sClassNav);
+     }
 
     /**
      * Show the form for creating a new resource.

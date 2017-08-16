@@ -4,6 +4,16 @@
 
 	return [
 
+		'SYSTEM' => 'Manufacturing Resources Planning'
+		'HOME' => 'Inicio',
+		'HELP' => 'Ayuda',
+		'EXIT' => 'Salir',
+
+		'administration' =>	[
+													'MSG_YES' => 'Sí',
+						 							'MSG_NO' => 'No'
+												],
+
 		'titles' 				=>	[
 											'LIST_USERS' => 'Lista de usuarios',
 											'LIST_PERMISSIONS' => 'Lista de permisos',
@@ -64,5 +74,3 @@
 										]
 
 	];
-
-?>
