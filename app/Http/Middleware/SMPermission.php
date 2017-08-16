@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class SMPrivilege
+class SMPermission
 {
     /**
      * Handle an incoming request.
@@ -13,16 +13,17 @@ class SMPrivilege
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $iViewCode)
+    public function handle($request, Closure $next, $iPermissionType, $iPermissionCode)
     {
         if (\Auth::user()->user_type_id == \Config::get('constants.TP_USER.ADMIN'))
         {
             return $next($request);
         }
 
-        foreach (\Auth::user()->userPermission as $oAssign)
+        foreach (\Auth::user()->userPermission as $oUserPermission)
         {
-            if ($oAssign->permission_id == $iViewCode)
+          if ($oUserPermission->permission->type_permission_id == $iPermissionType)
+            if ($oUserPermission->permission->code == $iPermissionCode)
             {
                 return $next($request);
             }

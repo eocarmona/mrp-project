@@ -20,9 +20,6 @@ class SWarehousesController extends Controller
        $this->middleware('mdmenu:'.\Config::get('constants.MODULES.WMS'));
 
        $this->oUtil = new SUtil();
-       $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id_user, \Config::get('constants.VIEW_CODE.WAREHOUSES'));
-
-       $this->iFilter = \Config::get('constants.FILTER.ACTIVES');
     }
 
     /**

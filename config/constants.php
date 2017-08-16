@@ -13,17 +13,12 @@ return [
                 ],
 
   'VIEW_CODE' => [
-                  'PRODUCTION' => '1',
-                  'QUALITY' => '2',
-                  'WAREHOUSES' => '3',
-                  'SHIPMENTS' => '4',
-                  'USERS' => '5',
-                  'PERMISSIONS' => '6',
-                  'PRIVILEGES' => '7',
-                  'ASSIGNAMENTS' => '8',
-                  'ACCESS' => '9',
-                  'COMPANIES' => '10',
-                  'DATABASES' => '11',
+                  'USERS' => '1',
+                  'PERMISSIONS' => '2',
+                  'PRIVILEGES' => '3',
+                  'ASSIGNAMENTS' => '4',
+                  'ACCESS' => '5',
+                  'COMPANIES' => '6',
                 ],
 
   'TP_USER' => ['ADMIN' => '1',
@@ -33,6 +28,7 @@ return [
                   'MODULE' => '1',
                   'BRANCH' => '2',
                   'WAREHOUSE' => '3',
+                  'VIEW' => '4',
                 ],
 
 	'PRIVILEGES' => ['NA' => '1',

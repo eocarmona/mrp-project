@@ -39,7 +39,7 @@ class AuthController extends Controller
 
     protected $loginPath ='auth/login';
 
-    protected $redirectAfterLogout = 'auth/login';
+    protected $redirectAfterLogout = '/';
 
     /**
      * Get a validator for an incoming registration request.

@@ -1,4 +1,4 @@
-@extends('front.main')
+@extends('front.admin')
 
 @section('title','Login')
 

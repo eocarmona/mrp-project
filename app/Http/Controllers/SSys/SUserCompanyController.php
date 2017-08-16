@@ -17,7 +17,7 @@ class SUserCompanyController extends Controller
 
     public function __construct()
     {
-       $this->middleware('mdprivilege:'.\Config::get('constants.VIEW_CODE.ACCESS'));
+       $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW')','.\Config::get('constants.VIEW_CODE.ACCESS'));
        $this->oUtil = new SUtil();
        $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.ACCESS'));
 

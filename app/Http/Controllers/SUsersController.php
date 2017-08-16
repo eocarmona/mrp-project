@@ -19,7 +19,7 @@ class SUsersController extends Controller
 
     public function __construct()
     {
-         #$this->middleware('mdprivilege:'.\Config::get('constants.VIEW_CODE.USERS'));
+         $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW')','.\Config::get('constants.VIEW_CODE.USERS'));
          #$this->middleware('mdcompany');
          $this->middleware('mdadmin');
 

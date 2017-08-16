@@ -65,14 +65,16 @@ class SValidation {
    * @param  int  $iPermissionId
    * @return 'none' or ''
    */
-  public static function showMenu($iPermissionId)
+  public static function showMenu($iPermissionType, $iPermissionCode)
   {
       if (\Auth::user()->user_type_id == \Config::get('constants.TP_USER.ADMIN')) {
         return '';
       }
 
       foreach (\Auth::user()->userPermission as $oUserPermission) {
-          if ($oUserPermission->permission_id == $iPermissionId) {
+        if ($oUserPermission->permission->type_permission_id == $iPermissionType)
+          if ($oUserPermission->permission->code == $iPermissionCode)
+          {
               return '';
           }
       }

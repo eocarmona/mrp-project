@@ -10,13 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::group(['middleware' => ['auth']], function() {
 
 //****************************************/ Start/*************************
-	Route::get('/', [
-		'uses' => 'SPlantillaController@index'
-	]);
 
 	Route::resource('start','SSys\SStartController');
 	Route::get('/start',[

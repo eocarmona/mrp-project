@@ -32,7 +32,7 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'mdadmin' => \App\Http\Middleware\SMAdmin::class,
-        'mdprivilege' => \App\Http\Middleware\SMPrivilege::class,
+        'mdpermission' => \App\Http\Middleware\SMPermission::class,
         'mdcompany' => \App\Http\Middleware\SMCompany::class,
         'mdmodule' => \App\Http\Middleware\SMModule::class,
         'mdmenu' => \App\Http\Middleware\SMMenu::class,

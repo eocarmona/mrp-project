@@ -18,11 +18,8 @@ class SQualityController extends Controller
        $this->middleware('mdmodule:'.\Config::get('constants.MODULES.QMS'));
 
        $this->middleware('mdmenu:'.\Config::get('constants.MODULES.QMS'));
-       
-       $this->oUtil = new SUtil();
-       $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.QUALITY'));
 
-       $this->iFilter = \Config::get('constants.FILTER.ACTIVES');
+       $this->oUtil = new SUtil();
     }
 
     /**
