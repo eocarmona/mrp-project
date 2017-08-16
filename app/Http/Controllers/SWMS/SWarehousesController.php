@@ -16,6 +16,7 @@ class SWarehousesController extends Controller
     public function __construct()
     {
        $this->middleware('mdprivilege:'.\Config::get('constants.VIEW_CODE.WAREHOUSES'));
+       $this->middleware('mdmenu:'.\Config::get('constants.MODULES.WMS'));
        $this->oUtil = new SUtil();
        $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id_user, \Config::get('constants.VIEW_CODE.WAREHOUSES'));
 
@@ -32,17 +33,16 @@ class SWarehousesController extends Controller
       $items = [
             ' '             => [],
             trans('menus.HOME')                   => ['route' => 'wms.home'],
-            trans('menus.warehouses.CATALOGUES')   => ['route' => 'start'],
-            trans('menus.warehouses.WAREHOUSES')    => [],
-            trans('menus.warehouses.INVENTORY')    => [],
-            trans('menus.warehouses.REPORTS')  =>
+            trans('menus.wms.CATALOGUES')   => ['route' => 'start'],
+            trans('menus.wms.WAREHOUSES')    => [],
+            trans('menus.wms.INVENTORY')    => [],
+            trans('menus.wms.REPORTS')  =>
                                     ['submenu' => [
-                                      trans('menus.warehouses.REPORT_STK')     => [],
-                                      trans('menus.warehouses.REPORT_INV')   => [],
+                                      trans('menus.wms.REPORT_STK')     => [],
+                                      trans('menus.wms.REPORT_INV')   => [],
                                     ]
                                 ],
             trans('menus.HELP')    => [],
-            trans('menus.EXIT')    => ['route' => 'auth.logout'],
         ];
 
         $sClassNav = 'navbar-blue';

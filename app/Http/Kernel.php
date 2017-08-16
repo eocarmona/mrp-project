@@ -33,6 +33,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'mdadmin' => \App\Http\Middleware\SMDAdmin::class,
         'mdprivilege' => \App\Http\Middleware\SMPrivilege::class,
-        'mdcompany' => \App\Http\Middleware\SMCompany::class
+        'mdcompany' => \App\Http\Middleware\SMCompany::class,
+        'mdmenu' => \App\Http\Middleware\SMMenu::class,
     ];
 }

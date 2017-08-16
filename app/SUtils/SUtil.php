@@ -60,7 +60,7 @@ class SUtil {
       }
       else
       {
-        $lUserCompany = SUserCompany::where('user_id', '=', $oUser->id)->where('is_deleted', 0)->paginate(10);
+        $lUserCompany = SUserCompany::where('user_id', '=', $oUser->id)->paginate(10);
       }
 
       foreach($lUserCompany as $UC) {

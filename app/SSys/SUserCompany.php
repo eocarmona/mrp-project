@@ -21,14 +21,6 @@ class SUserCompany extends Model
   public function scopeSearch($query, $iFilter)
     {
       switch ($iFilter) {
-        case \Config::get('constants.FILTER.ACTIVES'):
-          return $query->where('is_deleted', '=', "".\Config::get('constants.STATUS.ACTIVE'));
-          break;
-
-        case \Config::get('constants.FILTER.DELETED'):
-          return $query->where('is_deleted', '=', "".\Config::get('constants.STATUS.DEL'));
-          break;
-
         case \Config::get('constants.FILTER.ALL'):
           return $query;
           break;

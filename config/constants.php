@@ -5,6 +5,13 @@ return [
 
   'UNDEFINED' => '0',
 
+  'MODULES'   =>  [
+                  'MMS' => '1',
+                  'QMS' => '2',
+                  'WMS' => '3',
+                  'TMS' => '4',
+                ],
+
   'VIEW_CODE' => [
                   'PRODUCTION' => '1',
                   'QUALITY' => '2',

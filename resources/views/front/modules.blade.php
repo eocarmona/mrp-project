@@ -10,7 +10,9 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse">
-     {!! Menu::make($items, 'nav navbar-nav') !!}
+			<ul class="nav navbar-nav">
+				@include(config('laravel-menu.views.bootstrap-items'), array('items' => $sMenu->roots()))
+			</ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

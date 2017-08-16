@@ -19,7 +19,7 @@ class SUserCompanyController extends Controller
     {
        $this->middleware('mdprivilege:'.\Config::get('constants.VIEW_CODE.ACCESS'));
        $this->oUtil = new SUtil();
-       $this->oCurrentUserPermission = $this->oUtil->getTheAssignament(\Auth::user()->id, \Config::get('constants.VIEW_CODE.ACCESS'));
+       $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.ACCESS'));
 
        $this->iFilter = \Config::get('constants.FILTER.ACTIVES');
     }

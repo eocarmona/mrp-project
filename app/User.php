@@ -65,6 +65,6 @@ class User extends Model implements AuthenticatableContract,
 
     public function userPermission()
     {
-      return $this->hasMany('App\Sys\SUserPermission');
+      return $this->hasMany('App\SSys\SUserPermission');
     }
 }
