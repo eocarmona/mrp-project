@@ -17,6 +17,9 @@
           @include('front.templates.error')
 
         </section>
+				<section>
+					@yield('content')
+				</section>
       </div>
     </div>
   </div>

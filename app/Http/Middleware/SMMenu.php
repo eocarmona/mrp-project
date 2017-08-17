@@ -54,6 +54,7 @@ class SMMenu
               $menu->get(trans('wms.CATALOGUES'))->add(trans('wms.LOTS'), 'what-we-do');
               $menu->get(trans('wms.CATALOGUES'))->add(trans('wms.BAR_CODES'), 'what-we-do');
               $menu->add(trans('wms.ITEMS'), 'what-we-do')->nickname(trans('wms.ITEMS'));
+              $menu->get(trans('wms.ITEMS'))->add(trans('wms.ITEMS'), 'what-we-do');
               $menu->get(trans('wms.ITEMS'))->add(trans('wms.GENDERS'), 'what-we-do');
               $menu->get(trans('wms.ITEMS'))->add(trans('wms.GROUPS'), 'what-we-do');
               $menu->get(trans('wms.ITEMS'))->add(trans('wms.FAMILIES'), 'what-we-do');
