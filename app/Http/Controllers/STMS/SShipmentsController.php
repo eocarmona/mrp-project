@@ -37,7 +37,7 @@ class SShipmentsController extends Controller
 
          $sClassNav = 'navbar-blue-light';
 
-         return view('wms.index')->with('sClassNav', $sClassNav);
+         return view('tms.index')->with('sClassNav', $sClassNav);
      }
 
     /**

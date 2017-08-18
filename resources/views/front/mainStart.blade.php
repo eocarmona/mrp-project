@@ -6,9 +6,29 @@
 
 	<div class="row">
 		<div class="panel panel-default">
-		<div class="panel-heading">
-			<h2 class="panel-title">@yield('title')</h2>
-		</div>
+			<div class="panel-heading col-md-12">
+				<div class="col-md-10">
+					<h2 class="panel-title">@yield('title')</h2>
+				</div>
+				<div style="text-align: right;" class="dropdown col-md-2">
+					<button class="btn btn-default dropdown-toggle"
+											type="button" id="dropdownMenu1"
+											data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="true">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						@if (\Auth::user()->user_type_id == \Config::get('constants.TP_USER.ADMIN'))
+							<li>
+									<a href="{{ route('plantilla.admin') }}">{{ trans('userinterface.ADMINISTRATOR') }}</a>
+							</li>
+						@endif
+							<li>
+									<a href="{{ route('auth.logout') }}">{{ trans('userinterface.EXIT') }}</a>
+							</li>
+					</ul>
+				</div>
+			</div>
 		<div class="panel-body">
 			<section>
 				@include('flash::message')

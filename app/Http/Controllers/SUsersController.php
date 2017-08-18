@@ -22,8 +22,7 @@ class SUsersController extends Controller
          $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW').','.\Config::get('constants.VIEW_CODE.USERS'));
          $this->middleware('mdadmin');
 
-         $this->oUtil = new SUtil();
-         $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.USERS'));
+         $this->oCurrentUserPermission = SUtil::getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.USERS'));
 
          $this->iFilter = \Config::get('constants.FILTER.ACTIVES');
     }

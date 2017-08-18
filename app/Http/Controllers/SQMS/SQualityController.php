@@ -32,7 +32,7 @@ class SQualityController extends Controller
 
         $sClassNav = 'navbar-orange';
 
-        return view('wms.index')->with('sClassNav', $sClassNav);
+        return view('qms.index')->with('sClassNav', $sClassNav);
     }
 
     /**

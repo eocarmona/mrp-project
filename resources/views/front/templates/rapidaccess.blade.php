@@ -1,5 +1,5 @@
 <?php
-		function createBlock($image, $route, $button, $text) {
+		function createBlock($image, $route, $button, $class, $text) {
 			$rapidAccess =
         "
           <div class='col-md-6'>
@@ -11,7 +11,7 @@
               </div>
               <div class='col-md-5'>
                 <div class='row'>
-                  <a href='".$route."' class='btn btn-success3' style='display:block;'>".$button."</a>
+                  <a href='".$route."' class='btn btn-".$class."' style='display:block;'>".$button."</a>
                 </div>
                 <div class='row'>
                   <div class='bs-callout bs-callout-info'>

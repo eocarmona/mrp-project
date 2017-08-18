@@ -32,7 +32,7 @@ class SProductionController extends Controller
 
         $sClassNav = 'navbar-blue';
 
-        return view('wms.index')->with('sClassNav', $sClassNav);
+        return view('mms.index')->with('sClassNav', $sClassNav);
     }
 
     /**

@@ -8,6 +8,7 @@
 		'HOME' => 'Inicio',
 		'HELP' => 'Ayuda',
 		'EXIT' => 'Salir',
+		'ADMINISTRATOR' => 'Administrador',
 
 		'administration' =>	[
 													'MSG_YES' => 'Sí',

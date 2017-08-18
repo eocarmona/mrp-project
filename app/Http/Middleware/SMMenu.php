@@ -33,7 +33,8 @@ class SMMenu
 
         case \Config::get('constants.MODULES.QMS'):
           \Menu::make('sMenu', function($menu){
-              $menu->add('Home');
+              $menu->add(' ');
+              $menu->add('Home', array('route' => 'qms.home'));
               $menu->add('About',    'about');
               $menu->add('Services', 'services');
               $menu->add('Contact',  'contact');
@@ -66,7 +67,8 @@ class SMMenu
 
         case \Config::get('constants.MODULES.TMS'):
           \Menu::make('sMenu', function($menu){
-              $menu->add('Home');
+              $menu->add(' ');
+              $menu->add('Home', array('route' => 'tms.home'));
               $menu->add('About',    'about');
               $menu->add('Services', 'services');
               $menu->add('Contact',  'contact');

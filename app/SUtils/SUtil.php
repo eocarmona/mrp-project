@@ -17,7 +17,7 @@ class SUtil {
    * @param  int  $id_user
    * @return App\Sys\UserPermission
    */
-  public function getTheUserPermission($id_user, $identifier)
+  public static function getTheUserPermission($id_user, $identifier)
   {
       if (\Auth::user()->user_type_id == \Config::get('constants.TP_USER.ADMIN'))
       {
