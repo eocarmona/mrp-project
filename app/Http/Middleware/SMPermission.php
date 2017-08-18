@@ -15,7 +15,7 @@ class SMPermission
      */
     public function handle($request, Closure $next, $iPermissionType, $iPermissionCode)
     {
-        if (\Auth::user()->user_type_id == \Config::get('constants.TP_USER.ADMIN'))
+        if (\Auth::user()->user_type_id == \Config::get('scsys.TP_USER.ADMIN'))
         {
             return $next($request);
         }
@@ -23,10 +23,12 @@ class SMPermission
         foreach (\Auth::user()->userPermission as $oUserPermission)
         {
           if ($oUserPermission->permission->type_permission_id == $iPermissionType)
+          {
             if ($oUserPermission->permission->code == $iPermissionCode)
             {
                 return $next($request);
             }
+          }
         }
 
         return response('Unauthorized.', 401);

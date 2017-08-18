@@ -12,36 +12,50 @@ class SMMenu
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
      * @param  int $iModule can be:
-     *          \Config::get('constants.MODULES.MMS')
-     *          \Config::get('constants.MODULES.QMS')
-     *          \Config::get('constants.MODULES.WMS')
-     *          \Config::get('constants.MODULES.TMS')
+     *          \Config::get('scsys.MODULES.MMS')
+     *          \Config::get('scsys.MODULES.QMS')
+     *          \Config::get('scsys.MODULES.WMS')
+     *          \Config::get('scsys.MODULES.TMS')
      * @return mixed
      */
     public function handle($request, Closure $next, $iModule)
     {
       switch ($iModule) {
-        case \Config::get('constants.MODULES.MMS'):
+        case \Config::get('scsys.MODULES.MMS'):
           \Menu::make('sMenu', function($menu){
               $menu->add(' ');
               $menu->add('Home', array('route' => 'mms.home'));
               $menu->add('About',    'about');
               $menu->add('Services', 'services');
               $menu->add('Contact',  'contact');
+              $menu->add(trans('wms.REPORTS'), 'what-we-do');
+              $menu->add(trans('userinterface.MODULES'), array('route' => 'start.selmod'))->nickname(trans('userinterface.MODULES'));
+              $menu->get(trans('userinterface.MODULES'))->add(trans('qms.MODULE'), array('route' => 'qms.home'));
+              $menu->get(trans('userinterface.MODULES'))->add(trans('wms.MODULE'), array('route' => 'wms.home'));
+              $menu->get(trans('userinterface.MODULES'))->add(trans('tms.MODULE'), array('route' => 'tms.home'));
+              $menu->add(trans('userinterface.COMPANIES'), array('route' => 'start'));
+              $menu->add(trans('userinterface.EXIT'), array('route' => 'auth.logout'));
           });
           break;
 
-        case \Config::get('constants.MODULES.QMS'):
+        case \Config::get('scsys.MODULES.QMS'):
           \Menu::make('sMenu', function($menu){
               $menu->add(' ');
               $menu->add('Home', array('route' => 'qms.home'));
               $menu->add('About',    'about');
               $menu->add('Services', 'services');
               $menu->add('Contact',  'contact');
+              $menu->add(trans('wms.REPORTS'), 'what-we-do');
+              $menu->add(trans('userinterface.MODULES'), array('route' => 'start.selmod'))->nickname(trans('userinterface.MODULES'));
+              $menu->get(trans('userinterface.MODULES'))->add(trans('mms.MODULE'), array('route' => 'mms.home'));
+              $menu->get(trans('userinterface.MODULES'))->add(trans('wms.MODULE'), array('route' => 'wms.home'));
+              $menu->get(trans('userinterface.MODULES'))->add(trans('tms.MODULE'), array('route' => 'tms.home'));
+              $menu->add(trans('userinterface.COMPANIES'), array('route' => 'start'));
+              $menu->add(trans('userinterface.EXIT'), array('route' => 'auth.logout'));
           });
           break;
 
-        case \Config::get('constants.MODULES.WMS'):
+        case \Config::get('scsys.MODULES.WMS'):
           \Menu::make('sMenu', function($menu){
               $menu->add(' ');
               $menu->add(trans('userinterface.HOME'), array('route' => 'wms.home'));
@@ -62,16 +76,29 @@ class SMMenu
               $menu->get(trans('wms.ITEMS'))->add(trans('wms.CONVERTIONS'), 'what-we-do');
               $menu->add(trans('wms.INVENTORY'), 'what-we-do');
               $menu->add(trans('wms.REPORTS'), 'what-we-do');
+              $menu->add(trans('userinterface.MODULES'), array('route' => 'start.selmod'))->nickname(trans('userinterface.MODULES'));
+              $menu->get(trans('userinterface.MODULES'))->add(trans('mms.MODULE'), array('route' => 'mms.home'));
+              $menu->get(trans('userinterface.MODULES'))->add(trans('qms.MODULE'), array('route' => 'qms.home'));
+              $menu->get(trans('userinterface.MODULES'))->add(trans('tms.MODULE'), array('route' => 'tms.home'));
+              $menu->add(trans('userinterface.COMPANIES'), array('route' => 'start'));
+              $menu->add(trans('userinterface.EXIT'), array('route' => 'auth.logout'));
           });
           break;
 
-        case \Config::get('constants.MODULES.TMS'):
+        case \Config::get('scsys.MODULES.TMS'):
           \Menu::make('sMenu', function($menu){
               $menu->add(' ');
               $menu->add('Home', array('route' => 'tms.home'));
               $menu->add('About',    'about');
               $menu->add('Services', 'services');
               $menu->add('Contact',  'contact');
+              $menu->add(trans('wms.REPORTS'), 'what-we-do');
+              $menu->add(trans('userinterface.MODULES'), array('route' => 'start.selmod'))->nickname(trans('userinterface.MODULES'));
+              $menu->get(trans('userinterface.MODULES'))->add(trans('mms.MODULE'), array('route' => 'mms.home'));
+              $menu->get(trans('userinterface.MODULES'))->add(trans('qms.MODULE'), array('route' => 'qms.home'));
+              $menu->get(trans('userinterface.MODULES'))->add(trans('wms.MODULE'), array('route' => 'wms.home'));
+              $menu->add(trans('userinterface.COMPANIES'), array('route' => 'start'));
+              $menu->add(trans('userinterface.EXIT'), array('route' => 'auth.logout'));
           });
           break;
 

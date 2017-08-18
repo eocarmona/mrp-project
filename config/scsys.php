@@ -1,5 +1,5 @@
 <?php
-//\Config::get('constants.OPERATION.EDIT')
+//\Config::get('scsys.OPERATION.EDIT')
 
 return [
 
@@ -12,24 +12,8 @@ return [
                   'TMS' => '4',
                 ],
 
-  'VIEW_CODE' => [
-                  'USERS' => '1',
-                  'PERMISSIONS' => '2',
-                  'PRIVILEGES' => '3',
-                  'ASSIGNAMENTS' => '4',
-                  'ACCESS' => '5',
-                  'COMPANIES' => '6',
-                ],
-
   'TP_USER' => ['ADMIN' => '1',
                   'DEFAULT' => '2'],
-
-  'TP_PERMISSION' => [
-                  'MODULE' => '1',
-                  'BRANCH' => '2',
-                  'WAREHOUSE' => '3',
-                  'VIEW' => '4',
-                ],
 
 	'PRIVILEGES' => ['NA' => '1',
                     'READER' => '2',

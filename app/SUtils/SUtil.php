@@ -19,11 +19,11 @@ class SUtil {
    */
   public static function getTheUserPermission($id_user, $identifier)
   {
-      if (\Auth::user()->user_type_id == \Config::get('constants.TP_USER.ADMIN'))
+      if (\Auth::user()->user_type_id == \Config::get('scsys.TP_USER.ADMIN'))
       {
           $userPermission = new SUserPermission();
           $userPermission->id_usr_per = 0;
-          $userPermission->privilege_id = \Config::get('constants.PRIVILEGES.MANAGER');
+          $userPermission->privilege_id = \Config::get('scsys.PRIVILEGES.MANAGER');
           $userPermission->permission_id = $identifier;
           $userPermission->user_id = \Auth::user()->id;
       }
@@ -42,11 +42,11 @@ class SUtil {
    * @param  int  $iUserId
    * @return list of App\Sys\UserCompany
    */
-  public function getUserCompany($oUser)
+  public static function getUserCompany($oUser)
   {
       $lUserCompany = array();
 
-      if ($oUser->user_type_id == \Config::get('constants.TP_USER.ADMIN'))
+      if ($oUser->user_type_id == \Config::get('scsys.TP_USER.ADMIN'))
       {
         $lCompanies = SCompany::where('is_deleted', 0)->paginate(10);
 
@@ -68,52 +68,6 @@ class SUtil {
       }
 
       return $lUserCompany;
-  }
-
-  /**
-   * Determines if ,based on the privilege received, the user is authorized to create
-   *
-   * @param  int  $iPrivilegeId
-   * @return true or false
-   */
-  public function canCreate($iPrivilegeId)
-  {
-      return \Config::get('constants.PRIVILEGES.AUTHOR') <= $iPrivilegeId;
-  }
-
-  /**
-   * Determines if ,based on the privilege received, the user is authorized to edit
-   *
-   * @param  int  $iPrivilegeId
-   * @return true or false
-   */
-  public function canEdit($iPrivilegeId)
-  {
-      return \Config::get('constants.PRIVILEGES.EDITOR') <= $iPrivilegeId;
-  }
-
-  /**
-   * Determines if the user is the author of the registry and if,
-   * based on the privilege received, it has the authority to edit
-   *
-   * @param  int  $iPrivilegeId
-   * @return true or false
-   */
-  public function canAuthorEdit($iPrivilegeId, $iCreatedBy)
-  {
-      return \Config::get('constants.PRIVILEGES.AUTHOR') == $iPrivilegeId
-                  && $iCreatedBy == \Auth::user()->id;
-  }
-
-  /**
-   * Determines if ,based on the privilege received, the user is authorized to destroy
-   *
-   * @param  int  $iPrivilegeId
-   * @return true or false
-   */
-  public function canDestroy($iPrivilegeId)
-  {
-      return \Config::get('constants.PRIVILEGES.MANAGER') == $iPrivilegeId;
   }
 
 }

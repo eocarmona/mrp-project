@@ -10,17 +10,15 @@ use App\SUtils\SUtil;
 
 class SPrivilegesController extends Controller
 {
-      private $oUtil;
       private $oCurrentUserPermission;
       private $iFilter;
 
       public function __construct()
       {
-           $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW').','.\Config::get('constants.VIEW_CODE.PRIVILEGES'));
-           $this->oUtil = new SUtil();
-           $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.PRIVILEGES'));
+           $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.VIEW').','.\Config::get('scperm.VIEW_CODE.PRIVILEGES'));
+           $this->oCurrentUserPermission = SUtil::getTheUserPermission(\Auth::user()->id, \Config::get('scperm.VIEW_CODE.PRIVILEGES'));
 
-           $this->iFilter = \Config::get('constants.FILTER.ACTIVES');
+           $this->iFilter = \Config::get('scsys.FILTER.ACTIVES');
       }
 
     /**
@@ -30,7 +28,7 @@ class SPrivilegesController extends Controller
      */
     public function index(Request $request)
     {
-        $this->iFilter = $request->filter == null ? \Config::get('constants.FILTER.ACTIVES') : $request->filter;
+        $this->iFilter = $request->filter == null ? \Config::get('scsys.FILTER.ACTIVES') : $request->filter;
         $privileges = SPrivilege::Search($request->name, $this->iFilter)->orderBy('name', 'ASC')->paginate(4);
 
         return view('privileges.index')
@@ -46,7 +44,7 @@ class SPrivilegesController extends Controller
      */
     public function create()
     {
-      if ($this->oUtil->canCreate($this->oCurrentUserPermission->privilege_id))
+      if (SValidation::canCreate($this->oCurrentUserPermission->privilege_id))
         {
           return view('privileges.createEdit');
         }
@@ -93,7 +91,7 @@ class SPrivilegesController extends Controller
     {
         $privilege = SPrivilege::find($id);
 
-        if ($this->oUtil->canEdit($this->oCurrentUserPermission->privilege_id) || $this->oUtil->canAuthorEdit($this->oCurrentUserPermission->privilege_id, $privilege->created_by))
+        if (SValidation::canEdit($this->oCurrentUserPermission->privilege_id) || SValidation::canAuthorEdit($this->oCurrentUserPermission->privilege_id, $privilege->created_by))
         {
           return view('privileges.createEdit')
                                               ->with('privilege', $privilege)
@@ -127,7 +125,7 @@ class SPrivilegesController extends Controller
       $privilege = SPrivilege::find($id);
 
       $privilege->fill($request->all());
-      $privilege->is_deleted = \Config::get('constants.STATUS.ACTIVE');
+      $privilege->is_deleted = \Config::get('scsys.STATUS.ACTIVE');
 
       $privilege->save();
 
@@ -144,12 +142,12 @@ class SPrivilegesController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-      if ($this->oUtil->canDestroy($this->oCurrentUserPermission->privilege_id))
+      if (SValidation::canDestroy($this->oCurrentUserPermission->privilege_id))
       {
         $privilege = SPrivilege::find($id);
 
         $privilege->fill($request->all());
-        $privilege->is_deleted = \Config::get('constants.STATUS.DEL');
+        $privilege->is_deleted = \Config::get('scsys.STATUS.DEL');
 
         $privilege->save();
         #$privilege->delete();

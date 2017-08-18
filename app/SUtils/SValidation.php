@@ -16,26 +16,26 @@ class SValidation {
 
     $sRender = 'hidden';
 
-    if (\Auth::user()->user_type_id == \Config::get('constants.TP_USER.ADMIN')) {
+    if (\Auth::user()->user_type_id == \Config::get('scsys.TP_USER.ADMIN')) {
       return 'visible';
     }
 
     switch ($iElementType) {
-      case \Config::get('constants.OPERATION.CREATE'): # create
-          if ($oUserPermission->privilege_id >= \Config::get('constants.PRIVILEGES.AUTHOR')) {
+      case \Config::get('scsys.OPERATION.CREATE'): # create
+          if ($oUserPermission->privilege_id >= \Config::get('scsys.PRIVILEGES.AUTHOR')) {
               $sRender = 'visible';
           }
           break;
-      case \Config::get('constants.OPERATION.EDIT'): # edit
-          if ($oUserPermission->privilege_id >= \Config::get('constants.PRIVILEGES.EDITOR')) {
+      case \Config::get('scsys.OPERATION.EDIT'): # edit
+          if ($oUserPermission->privilege_id >= \Config::get('scsys.PRIVILEGES.EDITOR')) {
               $sRender = 'visible';
           }
-          else if ($oUserPermission->privilege_id == \Config::get('constants.PRIVILEGES.AUTHOR') && $iCreatedBy == $oUserPermission->user_id) {
+          else if ($oUserPermission->privilege_id == \Config::get('scsys.PRIVILEGES.AUTHOR') && $iCreatedBy == $oUserPermission->user_id) {
             $sRender = 'visible';
           }
           break;
-      case \Config::get('constants.OPERATION.DEL'): #delete
-          if ($oUserPermission->privilege_id == \Config::get('constants.PRIVILEGES.MANAGER')) {
+      case \Config::get('scsys.OPERATION.DEL'): #delete
+          if ($oUserPermission->privilege_id == \Config::get('scsys.PRIVILEGES.MANAGER')) {
             $sRender = 'visible';
           }
           break;
@@ -67,7 +67,7 @@ class SValidation {
    */
   public static function showMenu($iPermissionType, $iPermissionCode)
   {
-      if (\Auth::user()->user_type_id == \Config::get('constants.TP_USER.ADMIN')) {
+      if (\Auth::user()->user_type_id == \Config::get('scsys.TP_USER.ADMIN')) {
         return '';
       }
 
@@ -80,6 +80,81 @@ class SValidation {
       }
 
       return 'none';
+  }
+
+  /**
+   * Determines whether the session user has the received permission or not.
+   *
+   * @param  int  $iPermissionType integer value from \Config.scperm.TP_PERMISSION
+   * @param  int  $iPermissionCode code assigned to permission. \Config.scperm
+   *
+   * @return true or false
+   */
+   public static function hasPermission($iPermissionType, $iPermissionCode)
+   {
+       if (\Auth::user()->user_type_id == \Config::get('scsys.TP_USER.ADMIN'))
+       {
+           return true;
+       }
+
+       foreach (\Auth::user()->userPermission as $oUserPermission)
+       {
+         if ($oUserPermission->permission->type_permission_id == $iPermissionType)
+         {
+           if ($oUserPermission->permission->code == $iPermissionCode)
+           {
+               return true;
+           }
+         }
+       }
+
+       return false;
+   }
+
+  /**
+   * Determines if ,based on the privilege received, the user is authorized to create
+   *
+   * @param  int  $iPrivilegeId
+   * @return true or false
+   */
+  public static function canCreate($iPrivilegeId)
+  {
+      return \Config::get('scsys.PRIVILEGES.AUTHOR') <= $iPrivilegeId;
+  }
+
+  /**
+   * Determines if ,based on the privilege received, the user is authorized to edit
+   *
+   * @param  int  $iPrivilegeId
+   * @return true or false
+   */
+  public static function canEdit($iPrivilegeId)
+  {
+      return \Config::get('scsys.PRIVILEGES.EDITOR') <= $iPrivilegeId;
+  }
+
+  /**
+   * Determines if the user is the author of the registry and if,
+   * based on the privilege received, it has the authority to edit
+   *
+   * @param  int  $iPrivilegeId
+   * @return true or false
+   */
+  public static function canAuthorEdit($iPrivilegeId, $iCreatedBy)
+  {
+      return \Config::get('scsys.PRIVILEGES.AUTHOR') == $iPrivilegeId
+                  && $iCreatedBy == \Auth::user()->id;
+  }
+
+  /**
+   * Determines if ,based on the privilege received, the user is authorized to destroy
+   *
+   * @param  int  $iPrivilegeId
+   * @return true or false
+   */
+  public static function canDestroy($iPrivilegeId)
+  {
+      return \Config::get('scsys.PRIVILEGES.MANAGER') == $iPrivilegeId;
   }
 
 }

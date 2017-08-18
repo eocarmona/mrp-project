@@ -11,12 +11,10 @@ use App\SSys\SUserCompany;
 
 class SStartController extends Controller
 {
-    private $oUtil;
 
     public function __construct()
     {
         session()->forget('company');
-        $this->oUtil = new SUtil();
     }
 
     /**
@@ -26,7 +24,7 @@ class SStartController extends Controller
      */
     public function index()
     {
-        $lUserCompany = $this->oUtil->getUserCompany(\Auth::user());
+        $lUserCompany = SUtil::getUserCompany(\Auth::user());
 
         return view('start.select')
                             ->with('lUserCompany', $lUserCompany);

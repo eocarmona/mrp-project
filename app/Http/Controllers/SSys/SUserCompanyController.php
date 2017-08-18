@@ -11,17 +11,15 @@ use App\SSys\SCompany;
 
 class SUserCompanyController extends Controller
 {
-    private $oUtil;
     private $oCurrentUserPermission;
     private $iFilter;
 
     public function __construct()
     {
-       $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW').','.\Config::get('constants.VIEW_CODE.ACCESS'));
-       $this->oUtil = new SUtil();
-       $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.ACCESS'));
+       $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.VIEW').','.\Config::get('scperm.VIEW_CODE.ACCESS'));
+       $this->oCurrentUserPermission = SUtil::getTheUserPermission(\Auth::user()->id, \Config::get('scperm.VIEW_CODE.ACCESS'));
 
-       $this->iFilter = \Config::get('constants.FILTER.ACTIVES');
+       $this->iFilter = \Config::get('scsys.FILTER.ACTIVES');
     }
 
     /**
@@ -31,7 +29,7 @@ class SUserCompanyController extends Controller
      */
     public function index()
     {
-      $this->iFilter = $request->filter == null ? \Config::get('constants.FILTER.ACTIVES') : $request->filter;
+      $this->iFilter = $request->filter == null ? \Config::get('scsys.FILTER.ACTIVES') : $request->filter;
       $userCompany = SUserCompany::Search($this->iFilter)->orderBy('name', 'ASC')->paginate(4);
 
       $userCompany->each(function($userCompany) {
@@ -52,7 +50,7 @@ class SUserCompanyController extends Controller
      */
     public function create()
     {
-      if ($this->oUtil->canCreate($this->oCurrentUserPermission->privilege_id))
+      if (SValidation::canCreate($this->oCurrentUserPermission->privilege_id))
         {
           $users = SUser::orderBy('username', 'ASC')->lists('username', 'id');
           $companies = SCompany::orderBy('name', 'ASC')->lists('name', 'id_company');
@@ -106,7 +104,7 @@ class SUserCompanyController extends Controller
     {
           $userCompany = SUserCompany::find($id);
 
-          if ($this->oUtil->canEdit($this->oCurrentUserPermission->privilege_id) || $this->oUtil->canAuthorEdit($this->oCurrentUserPermission->privilege_id, $userCompany->created_by_id))
+          if (SValidation::canEdit($this->oCurrentUserPermission->privilege_id) || SValidation::canAuthorEdit($this->oCurrentUserPermission->privilege_id, $userCompany->created_by_id))
           {
               $assignament->user;
               $userCompany->company;
@@ -148,7 +146,7 @@ class SUserCompanyController extends Controller
       $userCompany = SUserCompany::find($id);
 
       $userCompany->fill($request->all());
-      $userCompany->is_deleted = \Config::get('constants.STATUS.ACTIVE');
+      $userCompany->is_deleted = \Config::get('scsys.STATUS.ACTIVE');
 
       $userCompany->save();
 
@@ -165,12 +163,12 @@ class SUserCompanyController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-      if ($this->oUtil->canDestroy($this->oCurrentUserPermission->privilege_id))
+      if (SValidation::canDestroy($this->oCurrentUserPermission->privilege_id))
         {
             $userCompany = SUserCompany::find($id);
 
             $userCompany->fill($request->all());
-            $userCompany->is_deleted = \Config::get('constants.STATUS.DEL');
+            $userCompany->is_deleted = \Config::get('scsys.STATUS.DEL');
 
             $userCompany->save();
             #$userCompany->delete();

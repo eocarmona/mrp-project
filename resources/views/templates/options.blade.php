@@ -6,11 +6,11 @@
 ?>
 
 <a href="{{ route($v_route_edit, $v_id) }}" data-toggle = "editar" title="{{ trans('userinterface.tooltips.EDIT') }}"
-																						style="visibility: {{ App\SUtils\SValidation::isRendered(\Config::get('constants.OPERATION.EDIT'), $actualUserPermission, $v_created_by) }};"
+																						style="visibility: {{ App\SUtils\SValidation::isRendered(\Config::get('scsys.OPERATION.EDIT'), $actualUserPermission, $v_created_by) }};"
 																						class="btn btn-info">
 	<span class="glyphicon glyphicon-pencil" aria-hidden = "true"/>
 </a>
-<a href="{{ route($v_route_destroy, $v_id) }}" style="visibility: {{ App\SUtils\SValidation::isRendered(\Config::get('constants.OPERATION.DEL'), $actualUserPermission, $v_created_by) }};"
+<a href="{{ route($v_route_destroy, $v_id) }}" style="visibility: {{ App\SUtils\SValidation::isRendered(\Config::get('scsys.OPERATION.DEL'), $actualUserPermission, $v_created_by) }};"
 															class="btn btn-danger"
 															data-toggle="confirmation-popout" data-popout="true"
 															data-btn-ok-label="{{ trans('messages.options.MSG_YES') }}"
@@ -23,9 +23,9 @@
 		<span  class="caret"></span>
 		<span class="sr-only">Toggle Dropdown</span>
 	</button>
-	<ul style="visibility: {{ App\SUtils\SValidation::isRendered(\Config::get('constants.OPERATION.EDIT'), $actualUserPermission, $v_created_by) }};" class="dropdown-menu" role="menu">
-		@if ($oRegistry->is_deleted == \Config::get('constants.STATUS.DEL') &&
-																	App\SUtils\SValidation::isRenderedB(\Config::get('constants.OPERATION.DEL'), $actualUserPermission, $v_created_by))
+	<ul style="visibility: {{ App\SUtils\SValidation::isRendered(\Config::get('scsys.OPERATION.EDIT'), $actualUserPermission, $v_created_by) }};" class="dropdown-menu" role="menu">
+		@if ($oRegistry->is_deleted == \Config::get('scsys.STATUS.DEL') &&
+																	App\SUtils\SValidation::isRenderedB(\Config::get('scsys.OPERATION.DEL'), $actualUserPermission, $v_created_by))
 			<li>
 				<a href="{{ route($sRoute.'.activate', $v_id) }}">
 					<i class="glyphicon glyphicon-ok-sign"></i>

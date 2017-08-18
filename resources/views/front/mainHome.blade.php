@@ -14,11 +14,11 @@
 												type="button" id="dropdownMenu1"
 												data-toggle="dropdown"
 												aria-haspopup="true" aria-expanded="true">
-							{{ session('company')->name }}
+							{{ session('company') == NULL ? 'Opciones' : session('company')->name }}
 						  <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							@if (\Auth::user()->user_type_id == \Config::get('constants.TP_USER.ADMIN'))
+							@if (\Auth::user()->user_type_id == \Config::get('scsys.TP_USER.ADMIN'))
 								<li>
 				            <a href="{{ route('plantilla.admin') }}">Administrar</a>
 				        </li>

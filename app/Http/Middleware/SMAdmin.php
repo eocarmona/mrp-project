@@ -16,7 +16,7 @@ class SMAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (\Auth::user()->user_type_id == \Config::get('constants.TP_USER.ADMIN')) {
+        if (\Auth::user()->user_type_id == \Config::get('scsys.TP_USER.ADMIN')) {
           return $next($request);
         }
         else

@@ -13,18 +13,18 @@ use App\SUtils\SUtil;
 
 class SUsersController extends Controller
 {
-    private $oUtil;
     private $oCurrentUserPermission;
     private $iFilter;
 
     public function __construct()
     {
-         $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW').','.\Config::get('constants.VIEW_CODE.USERS'));
+         $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.VIEW').','.\Config::get('sperm.VIEW_CODE.USERS'));
          $this->middleware('mdadmin');
 
-         $this->oCurrentUserPermission = SUtil::getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.USERS'));
+         dd(\Config::get('scperm.VIEW_CODE.USERS'));
+         $this->oCurrentUserPermission = SUtil::getTheUserPermission(\Auth::user()->id, \Config::get('scperm.VIEW_CODE.USERS'));
 
-         $this->iFilter = \Config::get('constants.FILTER.ACTIVES');
+         $this->iFilter = \Config::get('scsys.FILTER.ACTIVES');
     }
 
     /**
@@ -34,7 +34,7 @@ class SUsersController extends Controller
      */
     public function index(Request $request)
     {
-        $this->iFilter = $request->filter == null ? \Config::get('constants.FILTER.ACTIVES') : $request->filter;
+        $this->iFilter = $request->filter == null ? \Config::get('scsys.FILTER.ACTIVES') : $request->filter;
         $users = User::Search($request->name, $this->iFilter)->orderBy('username', 'ASC')->paginate(10);
 
         return view('users.index')
@@ -50,7 +50,7 @@ class SUsersController extends Controller
      */
     public function create()
     {
-        if ($this->oUtil->canCreate($this->oCurrentUserPermission->privilege_id))
+        if (SValidation::canCreate($this->oCurrentUserPermission->privilege_id))
           {
             $types = SUserType::orderBy('name', 'ASC')->lists('name', 'id_type');
 
@@ -100,7 +100,7 @@ class SUsersController extends Controller
     {
       $user = User::find($id);
 
-      if ($this->oUtil->canEdit($this->oCurrentUserPermission->privilege_id) || $this->oUtil->canAuthorEdit($this->oCurrentUserPermission->privilege_id, $user->created_by_id))
+      if (SValidation::canEdit($this->oCurrentUserPermission->privilege_id) || SValidation::canAuthorEdit($this->oCurrentUserPermission->privilege_id, $user->created_by_id))
       {
           $types = SUserType::orderBy('name', 'ASC')->lists('name', 'id_type');
           return view('users.createEdit')->with('user', $user)
@@ -136,7 +136,7 @@ class SUsersController extends Controller
       $user = User::find($id);
 
       $user->fill($request->all());
-      $user->is_deleted = \Config::get('constants.STATUS.ACTIVE');
+      $user->is_deleted = \Config::get('scsys.STATUS.ACTIVE');
 
       $user->save();
 
@@ -153,11 +153,11 @@ class SUsersController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-      if ($this->oUtil->canDestroy($this->oCurrentUserPermission->privilege_id))
+      if (SValidation::canDestroy($this->oCurrentUserPermission->privilege_id))
       {
         $user = User::find($id);
         $user->fill($request->all());
-        $user->is_deleted = \Config::get('constants.STATUS.DEL');
+        $user->is_deleted = \Config::get('scsys.STATUS.DEL');
         $user->updated_by_id = \Auth::user()->id;
 
         $user->save();

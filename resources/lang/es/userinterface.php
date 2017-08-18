@@ -9,6 +9,8 @@
 		'HELP' => 'Ayuda',
 		'EXIT' => 'Salir',
 		'ADMINISTRATOR' => 'Administrador',
+		'MODULES' => 'Módulos',
+		'COMPANIES' => 'Empresas',
 
 		'administration' =>	[
 													'MSG_YES' => 'Sí',

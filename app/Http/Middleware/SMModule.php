@@ -15,7 +15,7 @@ class SMModule {
      */
     public function handle($request, Closure $next, $iModule)
     {
-      if (\Auth::user()->user_type_id == \Config::get('constants.TP_USER.ADMIN'))
+      if (\Auth::user()->user_type_id == \Config::get('scsys.TP_USER.ADMIN'))
       {
           return $next($request);
       }
@@ -23,7 +23,7 @@ class SMModule {
       {
         foreach (\Auth::user()->userPermission as $oUserPermission)
         {
-          if ($oUserPermission->permission->type_permission_id == \Config::get('constants.TP_PERMISSION.MODULE')) {
+          if ($oUserPermission->permission->type_permission_id == \Config::get('scperm.TP_PERMISSION.MODULE')) {
             if ($oUserPermission->permission_id == $iModule)
             {
                 return $next($request);

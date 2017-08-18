@@ -10,17 +10,15 @@ use App\SUtils\SUtil;
 
 class SPermissionsController extends Controller
 {
-      private $oUtil;
       private $oCurrentUserPermission;
       private $iFilter;
 
       public function __construct()
       {
-           $this->middleware('mdpermission:'.\Config::get('constants.TP_PERMISSION.VIEW').','.\Config::get('constants.VIEW_CODE.PERMISSIONS'));
-           $this->oUtil = new SUtil();
-           $this->oCurrentUserPermission = $this->oUtil->getTheUserPermission(\Auth::user()->id, \Config::get('constants.VIEW_CODE.PERMISSIONS'));
+           $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.VIEW').','.\Config::get('scperm.VIEW_CODE.PERMISSIONS'));
+           $this->oCurrentUserPermission = SUtil::getTheUserPermission(\Auth::user()->id, \Config::get('scperm.VIEW_CODE.PERMISSIONS'));
 
-           $this->iFilter = \Config::get('constants.FILTER.ACTIVES');
+           $this->iFilter = \Config::get('scsys.FILTER.ACTIVES');
       }
 
     /**
@@ -30,7 +28,7 @@ class SPermissionsController extends Controller
      */
     public function index(Request $request)
     {
-        $this->iFilter = $request->filter == null ? \Config::get('constants.FILTER.ACTIVES') : $request->filter;
+        $this->iFilter = $request->filter == null ? \Config::get('scsys.FILTER.ACTIVES') : $request->filter;
         $permissions = SPermission::Search($request->name, $this->iFilter)->orderBy('name', 'ASC')->paginate(4);
 
         return view('permissions.index')
@@ -46,7 +44,7 @@ class SPermissionsController extends Controller
      */
     public function create()
     {
-      if ($this->oUtil->canCreate($this->oCurrentUserPermission->privilege_id))
+      if (SValidation::canCreate($this->oCurrentUserPermission->privilege_id))
         {
           return view('permissions.createEdit');
         }
@@ -93,7 +91,7 @@ class SPermissionsController extends Controller
     {
         $permission = SPermission::find($id);
 
-        if ($this->oUtil->canEdit($this->oCurrentUserPermission->privilege_id) || $this->oUtil->canAuthorEdit($this->oCurrentUserPermission->privilege_id, $permission->created_by_id))
+        if (SValidation::canEdit($this->oCurrentUserPermission->privilege_id) || SValidation::canAuthorEdit($this->oCurrentUserPermission->privilege_id, $permission->created_by_id))
         {
           return view('permissions.createEdit')->with('permission', $permission)
                                                 ->with('iFilter', $this->iFilter);
@@ -123,16 +121,16 @@ class SPermissionsController extends Controller
 
     public function activate(Request $request, $id)
     {
-      $permission = SPermission::find($id);
+        $permission = SPermission::find($id);
 
-      $permission->fill($request->all());
-      $permission->is_deleted = \Config::get('constants.STATUS.ACTIVE');
+        $permission->fill($request->all());
+        $permission->is_deleted = \Config::get('scsys.STATUS.ACTIVE');
 
-      $permission->save();
+        $permission->save();
 
-      Flash::success("Se ha activado de forma exitosa!");
+        Flash::success("Se ha activado de forma exitosa!");
 
-      return redirect()->route('permissions.index');
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -143,22 +141,22 @@ class SPermissionsController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-      if ($this->oUtil->canDestroy($this->oCurrentUserPermission->privilege_id))
-      {
-        $permission = SPermission::find($id);
+      if (SValidation::canDestroy($this->oCurrentUserPermission->privilege_id))
+        {
+          $permission = SPermission::find($id);
 
-        $permission->fill($request->all());
-        $permission->is_deleted = \Config::get('constants.STATUS.DEL');
+          $permission->fill($request->all());
+          $permission->is_deleted = \Config::get('scsys.STATUS.DEL');
 
-        $permission->save();
-        #$permission->delete();
-        Flash::error('El permiso '.$permission->name. ' ha sido borrado de forma exitosa!');
+          $permission->save();
+          #$permission->delete();
+          Flash::error('El permiso '.$permission->name. ' ha sido borrado de forma exitosa!');
 
-        return redirect()->route('permissions.index');
-      }
-      else
-      {
-        return response('Unauthorized.', 401);
-      }
+          return redirect()->route('permissions.index');
+        }
+        else
+        {
+          return response('Unauthorized.', 401);
+        }
     }
 }

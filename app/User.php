@@ -38,17 +38,17 @@ class User extends Model implements AuthenticatableContract,
     public function scopeSearch($query, $name, $iFilter)
     {
         switch ($iFilter) {
-          case \Config::get('constants.FILTER.ACTIVES'):
-            return $query->where('is_deleted', '=', "".\Config::get('constants.STATUS.ACTIVE'))
+          case \Config::get('scsys.FILTER.ACTIVES'):
+            return $query->where('is_deleted', '=', "".\Config::get('scsys.STATUS.ACTIVE'))
                         ->where('username', 'LIKE', "%".$name."%");
             break;
 
-          case \Config::get('constants.FILTER.DELETED'):
-            return $query->where('is_deleted', '=', "".\Config::get('constants.STATUS.DEL'))
+          case \Config::get('scsys.FILTER.DELETED'):
+            return $query->where('is_deleted', '=', "".\Config::get('scsys.STATUS.DEL'))
                           ->where('username', 'LIKE', "%".$name."%");
             break;
 
-          case \Config::get('constants.FILTER.ALL'):
+          case \Config::get('scsys.FILTER.ALL'):
             return $query->where('username', 'LIKE', "%".$name."%");
             break;
 

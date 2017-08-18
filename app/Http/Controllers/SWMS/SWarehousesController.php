@@ -9,17 +9,14 @@ use App\SUtils\SUtil;
 
 class SWarehousesController extends Controller
 {
-    private $oUtil;
     private $oCurrentUserPermission;
     private $iFilter;
 
     public function __construct()
     {
-       $this->middleware('mdmodule:'.\Config::get('constants.MODULES.WMS'));
+       $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.MODULE').','.\Config::get('scperm.MODULES.WMS'));
 
-       $this->middleware('mdmenu:'.\Config::get('constants.MODULES.WMS'));
-
-       $this->oUtil = new SUtil();
+       $this->middleware('mdmenu:'.\Config::get('scperm.MODULES.WMS'));
     }
 
     /**

@@ -15,7 +15,7 @@
 				<tr>
 					<td>{{ $permission->name }}</td>
 					<td>
-						@if ($permission->is_deleted == \Config::get('constants.STATUS.ACTIVE'))
+						@if ($permission->is_deleted == \Config::get('scsys.STATUS.ACTIVE'))
 								<span class="label label-success">{{ trans('userinterface.labels.ACTIVE') }}</span>
 						@else
 								<span class="label label-danger">{{ trans('userinterface.labels.INACTIVE') }}</span>

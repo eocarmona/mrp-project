@@ -9,17 +9,14 @@ use App\SUtils\SUtil;
 
 class SQualityController extends Controller
 {
-    private $oUtil;
     private $oCurrentAssignament;
     private $iFilter;
 
     public function __construct()
     {
-       $this->middleware('mdmodule:'.\Config::get('constants.MODULES.QMS'));
+       $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.MODULE').','.\Config::get('scperm.MODULES.QMS'));
 
-       $this->middleware('mdmenu:'.\Config::get('constants.MODULES.QMS'));
-
-       $this->oUtil = new SUtil();
+       $this->middleware('mdmenu:'.\Config::get('scperm.MODULES.QMS'));
     }
 
     /**
