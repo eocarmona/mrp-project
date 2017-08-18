@@ -67,19 +67,14 @@ class SValidation {
    */
   public static function showMenu($iPermissionType, $iPermissionCode)
   {
-      if (\Auth::user()->user_type_id == \Config::get('scsys.TP_USER.ADMIN')) {
+      if (SValidation::hasPermission($iPermissionType, $iPermissionCode))
+      {
         return '';
       }
-
-      foreach (\Auth::user()->userPermission as $oUserPermission) {
-        if ($oUserPermission->permission->type_permission_id == $iPermissionType)
-          if ($oUserPermission->permission->code == $iPermissionCode)
-          {
-              return '';
-          }
+      else
+      {
+        return 'none';
       }
-
-      return 'none';
   }
 
   /**

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\SUtils\SValidation;
 
 class SMPermission
 {
@@ -15,22 +16,13 @@ class SMPermission
      */
     public function handle($request, Closure $next, $iPermissionType, $iPermissionCode)
     {
-        if (\Auth::user()->user_type_id == \Config::get('scsys.TP_USER.ADMIN'))
+        if (SValidation::hasPermission($iPermissionType, $iPermissionCode))
         {
-            return $next($request);
+          return $next($request);
         }
-
-        foreach (\Auth::user()->userPermission as $oUserPermission)
+        else
         {
-          if ($oUserPermission->permission->type_permission_id == $iPermissionType)
-          {
-            if ($oUserPermission->permission->code == $iPermissionCode)
-            {
-                return $next($request);
-            }
-          }
+          return response('Unauthorized.', 401);
         }
-
-        return response('Unauthorized.', 401);
     }
 }

@@ -9,6 +9,7 @@
 			<ul class="nav navbar-nav">
 				@include(config('laravel-menu.views.bootstrap-items'), array('items' => $sMenu->roots()))
 			</ul>
+      @include('front.templates.userul')
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

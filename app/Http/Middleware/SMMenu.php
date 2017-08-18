@@ -29,12 +29,6 @@ class SMMenu
               $menu->add('Services', 'services');
               $menu->add('Contact',  'contact');
               $menu->add(trans('wms.REPORTS'), 'what-we-do');
-              $menu->add(trans('userinterface.MODULES'), array('route' => 'start.selmod'))->nickname(trans('userinterface.MODULES'));
-              $menu->get(trans('userinterface.MODULES'))->add(trans('qms.MODULE'), array('route' => 'qms.home'));
-              $menu->get(trans('userinterface.MODULES'))->add(trans('wms.MODULE'), array('route' => 'wms.home'));
-              $menu->get(trans('userinterface.MODULES'))->add(trans('tms.MODULE'), array('route' => 'tms.home'));
-              $menu->add(trans('userinterface.COMPANIES'), array('route' => 'start'));
-              $menu->add(trans('userinterface.EXIT'), array('route' => 'auth.logout'));
           });
           break;
 
@@ -46,12 +40,7 @@ class SMMenu
               $menu->add('Services', 'services');
               $menu->add('Contact',  'contact');
               $menu->add(trans('wms.REPORTS'), 'what-we-do');
-              $menu->add(trans('userinterface.MODULES'), array('route' => 'start.selmod'))->nickname(trans('userinterface.MODULES'));
-              $menu->get(trans('userinterface.MODULES'))->add(trans('mms.MODULE'), array('route' => 'mms.home'));
-              $menu->get(trans('userinterface.MODULES'))->add(trans('wms.MODULE'), array('route' => 'wms.home'));
-              $menu->get(trans('userinterface.MODULES'))->add(trans('tms.MODULE'), array('route' => 'tms.home'));
-              $menu->add(trans('userinterface.COMPANIES'), array('route' => 'start'));
-              $menu->add(trans('userinterface.EXIT'), array('route' => 'auth.logout'));
+
           });
           break;
 
@@ -76,12 +65,7 @@ class SMMenu
               $menu->get(trans('wms.ITEMS'))->add(trans('wms.CONVERTIONS'), 'what-we-do');
               $menu->add(trans('wms.INVENTORY'), 'what-we-do');
               $menu->add(trans('wms.REPORTS'), 'what-we-do');
-              $menu->add(trans('userinterface.MODULES'), array('route' => 'start.selmod'))->nickname(trans('userinterface.MODULES'));
-              $menu->get(trans('userinterface.MODULES'))->add(trans('mms.MODULE'), array('route' => 'mms.home'));
-              $menu->get(trans('userinterface.MODULES'))->add(trans('qms.MODULE'), array('route' => 'qms.home'));
-              $menu->get(trans('userinterface.MODULES'))->add(trans('tms.MODULE'), array('route' => 'tms.home'));
-              $menu->add(trans('userinterface.COMPANIES'), array('route' => 'start'));
-              $menu->add(trans('userinterface.EXIT'), array('route' => 'auth.logout'));
+
           });
           break;
 
@@ -93,12 +77,7 @@ class SMMenu
               $menu->add('Services', 'services');
               $menu->add('Contact',  'contact');
               $menu->add(trans('wms.REPORTS'), 'what-we-do');
-              $menu->add(trans('userinterface.MODULES'), array('route' => 'start.selmod'))->nickname(trans('userinterface.MODULES'));
-              $menu->get(trans('userinterface.MODULES'))->add(trans('mms.MODULE'), array('route' => 'mms.home'));
-              $menu->get(trans('userinterface.MODULES'))->add(trans('qms.MODULE'), array('route' => 'qms.home'));
-              $menu->get(trans('userinterface.MODULES'))->add(trans('wms.MODULE'), array('route' => 'wms.home'));
-              $menu->add(trans('userinterface.COMPANIES'), array('route' => 'start'));
-              $menu->add(trans('userinterface.EXIT'), array('route' => 'auth.logout'));
+
           });
           break;
 
