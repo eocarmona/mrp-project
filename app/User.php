@@ -60,7 +60,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function userType()
     {
-      return $this->belongsTo('App\Sys\TypeUser');
+      return $this->belongsTo('App\SSys\TypeUser');
     }
 
     public function userPermission()

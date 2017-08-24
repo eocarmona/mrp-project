@@ -15,7 +15,7 @@ class SUtil {
    *
    * @param  int  $identifier
    * @param  int  $id_user
-   * @return App\Sys\UserPermission
+   * @return App\SSys\UserPermission
    */
   public static function getTheUserPermission($id_user, $identifier)
   {
@@ -40,7 +40,7 @@ class SUtil {
    * Return a list of UserCompany objects corresponding to the user.
    *
    * @param  int  $iUserId
-   * @return list of App\Sys\UserCompany
+   * @return list of App\SSys\UserCompany
    */
   public static function getUserCompany($oUser)
   {
