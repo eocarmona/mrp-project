@@ -19,7 +19,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var string
      */
-    protected $table = 'sys_users';
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -66,5 +66,15 @@ class User extends Model implements AuthenticatableContract,
     public function userPermission()
     {
       return $this->hasMany('App\SSys\SUserPermission');
+    }
+
+    public function coUsPermission()
+    {
+      return $this->hasMany('App\SSys\SCoUsPermission');
+    }
+
+    public function userCompany()
+    {
+      return $this->hasMany('App\SSys\SUserCompany');
     }
 }

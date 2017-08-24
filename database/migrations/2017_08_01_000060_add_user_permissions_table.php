@@ -17,11 +17,12 @@ class AddUserPermissionsTable extends Migration
       	$table->integer('user_id')->unsigned();
       	$table->integer('permission_id')->unsigned();
       	$table->integer('privilege_id')->unsigned();
-
-      	$table->foreign('user_id')->references('id')->on('sys_users')->onDelete('cascade');
-      	$table->foreign('permission_id')->references('id_permission')->on('syss_permissions')->onDelete('cascade');
+      	
+      	$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+      	$table->foreign('permission_id')->references('id_module')->on('syss_modules')->onDelete('cascade');
       	$table->foreign('privilege_id')->references('id_privilege')->on('syss_privileges')->onDelete('cascade');
       });
+
     }
 
     /**

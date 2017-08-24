@@ -12,7 +12,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-      Schema::create('sys_users', function (blueprint $table) {
+      Schema::create('users', function (blueprint $table) {
       	$table->increments('id');
       	$table->char('username', 100);
       	$table->char('email', 100);
@@ -21,18 +21,17 @@ class CreateUsersTable extends Migration
       	$table->boolean('is_deleted');
       	$table->integer('created_by_id')->unsigned();
       	$table->integer('updated_by_id')->unsigned();
-        $table->rememberToken();
+      	$table->rememberToken();
       	$table->timestamps();
 
       	$table->foreign('user_type_id')->references('id_type')->on('syss_user_types')->onDelete('cascade');
-      	$table->foreign('created_by_id')->references('id')->on('sys_users')->onDelete('cascade');
-      	$table->foreign('updated_by_id')->references('id')->on('sys_users')->onDelete('cascade');
+      	$table->foreign('created_by_id')->references('id')->on('users')->onDelete('cascade');
+      	$table->foreign('updated_by_id')->references('id')->on('users')->onDelete('cascade');
       });
 
-      DB::table('sys_users')->insert([
+      DB::table('users')->insert([
       	['id' => '1','username' => 'admin','email' => 'admin@mail.com','password' => '$2y$10$JTOe0SbUINktfiI2iYEOEOSkmQN73gBThnKmB5JqLOt/37V8obTHm','user_type_id' => '1', 'is_deleted' => '0', 'created_by_id' => '1', 'updated_by_id' => '1'],
       ]);
-
 
     }
 
@@ -43,6 +42,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sys_users');
+        Schema::drop('users');
     }
 }

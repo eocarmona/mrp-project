@@ -13,6 +13,16 @@ class SPermission extends Model
       return $this->hasMany('App\SSys\SUserPermission');
   }
 
+  public function coUsPermission()
+  {
+    return $this->hasMany('App\SSys\SCoUsPermission');
+  }
+
+  public function module()
+  {
+      return $this->belongsTo('App\SSys\SModule');
+  }
+
   public function scopeSearch($query, $name, $iFilter)
     {
       switch ($iFilter) {

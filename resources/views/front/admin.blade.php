@@ -2,7 +2,11 @@
 <html lang="es">
 	@include('front.head')
 <body>
-			@include('front.templates.menu')
+	@if (Auth::check())
+		@include('front.templates.menu')
+	@else
+		<br />
+	@endif
 
 	<div class="container">
 

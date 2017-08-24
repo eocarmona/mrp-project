@@ -1,6 +1,6 @@
 @extends('front.modules')
 
-@section('title', trans('tms.MODULE'))
+@section('title', trans('qms.MODULE'))
 
 @section('content')
 

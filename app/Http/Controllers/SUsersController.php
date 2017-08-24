@@ -72,6 +72,8 @@ class SUsersController extends Controller
         $user = new User($request->all());
         $user->password = bcrypt($request->password);
         $user->created_by_id =\Auth::user()->id;
+        $user->updated_by_id =\Auth::user()->id;
+#        dd($user);
         $user->save();
         Flash::success("Se ha registrado ".$user->username. " de forma exitosa!");
 

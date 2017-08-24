@@ -12,4 +12,9 @@ class SCompany extends Model {
     {
     	return $this->hasMany('App\SSys\SUserCompany');
     }
+
+    public function coUsPermission()
+    {
+      return $this->hasMany('App\SSys\SCoUsPermission');
+    }
 }

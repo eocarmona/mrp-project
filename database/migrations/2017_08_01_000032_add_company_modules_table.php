@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserCompaniesTable extends Migration
+class AddCompanyModulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,18 +12,17 @@ class AddUserCompaniesTable extends Migration
      */
     public function up()
     {
-      Schema::create('sys_user_companies', function (blueprint $table) {
-      	$table->increments('id_usr_comp');
-      	$table->integer('user_id')->unsigned();
+      Schema::create('syss_company_modules', function (blueprint $table) {
+      	$table->increments('id_com_mod');
+      	$table->boolean('is_deleted');
       	$table->integer('company_id')->unsigned();
-      	$table->integer('created_by_id')->unsigned();
+      	$table->integer('module_id')->unsigned();
       	$table->timestamps();
 
-      	$table->foreign('user_id')->references('id')->on('sys_users')->onDelete('cascade');
       	$table->foreign('company_id')->references('id_company')->on('sys_companies')->onDelete('cascade');
-      	$table->foreign('created_by_id')->references('id')->on('sys_users')->onDelete('cascade');
+      	$table->foreign('module_id')->references('id_module')->on('syss_modules')->onDelete('cascade');
+      });
 
-      });	
     }
 
     /**
@@ -33,6 +32,6 @@ class AddUserCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sys_user_companies');
+      Schema::drop('syss_company_modules');
     }
 }

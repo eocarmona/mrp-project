@@ -26,11 +26,9 @@ class AddCompaniesTable extends Migration
       	$table->integer('updated_by_id')->unsigned();
       	$table->timestamps();
 
-      	$table->foreign('created_by_id')->references('id')->on('sys_users')->onDelete('cascade');
-      	$table->foreign('updated_by_id')->references('id')->on('sys_users')->onDelete('cascade');
+      	$table->foreign('created_by_id')->references('id')->on('users')->onDelete('cascade');
+      	$table->foreign('updated_by_id')->references('id')->on('users')->onDelete('cascade');
       });
-
-
     }
 
     /**
