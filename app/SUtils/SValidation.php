@@ -87,18 +87,20 @@ class SValidation {
    */
    public static function hasPermission($iPermissionType, $iPermissionCode)
    {
-       if (\Auth::user()->user_type_id == \Config::get('scsys.TP_USER.ADMIN'))
-       {
-           return true;
-       }
-
-       foreach (\Auth::user()->userPermission as $oUserPermission)
-       {
-         if ($oUserPermission->permission->type_permission_id == $iPermissionType)
+       if (\Auth::check()) {
+         if (\Auth::user()->user_type_id == \Config::get('scsys.TP_USER.ADMIN'))
          {
-           if ($oUserPermission->permission->code == $iPermissionCode)
+             return true;
+         }
+
+         foreach (\Auth::user()->userPermission as $oUserPermission)
+         {
+           if ($oUserPermission->permission->type_permission_id == $iPermissionType)
            {
-               return true;
+             if ($oUserPermission->permission->code == $iPermissionCode)
+             {
+                 return true;
+             }
            }
          }
        }
