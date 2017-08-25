@@ -47,7 +47,7 @@ class AuthController extends Controller
     {
         $credentials = $request->only($this->loginUsername(), 'password');
 
-        return array_add($credentials, 'is_deleted', '0');
+        return array_add($credentials, 'is_deleted', \Config::get('scsys.STATUS.ACTIVE'));
     }
 
     public function authenticated($request, User $user)
