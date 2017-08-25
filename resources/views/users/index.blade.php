@@ -4,7 +4,7 @@
 
 @section('content')
 	<?php $ruta="users"?>
-	<table class="table table-condensed">
+	<table data-toggle="table" id="users" class="table">
 		<thead>
 			<th>{{ trans('userinterface.labels.NAME') }}</th>
 			<th>{{ trans('userinterface.labels.EMAIL') }}</th>
