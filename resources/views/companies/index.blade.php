@@ -4,7 +4,7 @@
 
 @section('content')
 	<?php $ruta="companies/create"?>
-	<table class="table table-striped">
+	<table data-sortable="true" class="table table-striped">
 		<thead>
 			<th>Nombre Empreasa</th>
 			<th>RFC</th>
@@ -16,9 +16,8 @@
 				<tr>
 					<td>{{ $company->name }}</td>
 					<td>{{ $company->rfc }}</td>
-
 					<td>
-						<a href="{{ route('companies.edit', $company->id) }}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"> </span></a> 
+						<a href="{{ route('companies.edit', $company->id) }}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"> </span></a>
 						<a href="{{ route('companies.destroy', $company->id) }}" onclick="return confirm('¿Seguro que deseas eliminarlo?');" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
 					</td>
 				</tr>

@@ -4,3 +4,7 @@
 <script src="{{ asset('Trumbowyg/dist/trumbowyg.min.js') }}"></script>
 <script src="{{ asset('bootstrap/js/bootstrap-confirmation.js') }}"></script>
 <script src="{{ asset('bootstrap/js/confirmation-js.js') }}"></script>
+<!--
+<script src="{{ asset('bootstrap-table/bootstrap-table.js') }}"></script>
+<script src="{{ asset('bootstrap-table/bootstrap-table-zh-CN.js') }}"></script>
+-->

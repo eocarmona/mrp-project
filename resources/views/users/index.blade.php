@@ -4,11 +4,11 @@
 
 @section('content')
 	<?php $ruta="users"?>
-	<table data-toggle="table" id="users" class="table">
+	<table data-toggle="table" class="table table-striped">
 		<thead>
-			<th>{{ trans('userinterface.labels.NAME') }}</th>
-			<th>{{ trans('userinterface.labels.EMAIL') }}</th>
-			<th>{{ trans('userinterface.labels.STATUS') }}</th>
+			<th data-sortable="true">{{ trans('userinterface.labels.NAME') }}</th>
+			<th data-sortable="true">{{ trans('userinterface.labels.EMAIL') }}</th>
+			<th data-sortable="true">{{ trans('userinterface.labels.STATUS') }}</th>
 			<th>{{ trans('userinterface.labels.ACTION') }}</th>
 		</thead>
 		<tbody>

@@ -4,11 +4,11 @@
 
 @section('content')
 	<?php $ruta="permissions"?>
-	<table class="table table-striped">
+	<table data-toggle="table" class="table table-striped">
 		<thead>
-			<th>{{ trans('userinterface.labels.NAME') }}</th>
-			<th>{{ trans('userinterface.labels.STATUS') }}</th>
-			<th>{{ trans('userinterface.labels.ACTION') }}</th>
+			<th data-sortable="true">{{ trans('userinterface.labels.NAME') }}</th>
+			<th data-sortable="true">{{ trans('userinterface.labels.STATUS') }}</th>
+			<th data-sortable="true">{{ trans('userinterface.labels.ACTION') }}</th>
 		</thead>
 		<tbody>
 			@foreach($permissions as $permission)

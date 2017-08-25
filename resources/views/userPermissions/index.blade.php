@@ -4,11 +4,11 @@
 
 @section('content')
 	<?php $ruta="userPermissions"?>
-	<table class="table table-striped">
+	<table data-toggle="table" class="table table-striped">
 		<thead>
-			<th>Usuario</th>
-			<th>Permiso</th>
-      <th>Privilegio</th>
+			<th data-sortable="true">Usuario</th>
+			<th data-sortable="true">Permiso</th>
+      <th data-sortable="true">Privilegio</th>
       <th>Acciones</th>
 		</thead>
 		<tbody>

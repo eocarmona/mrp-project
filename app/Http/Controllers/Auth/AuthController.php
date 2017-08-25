@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use App\Http\Controllers\Auth\Request;
 
 class AuthController extends Controller
 {
@@ -40,6 +41,23 @@ class AuthController extends Controller
     protected $loginPath ='auth/login';
 
     protected $redirectAfterLogout = '/';
+
+
+    public function getCredentials($request)
+    {
+        $credentials = $request->only($this->loginUsername(), 'password');
+
+        return array_add($credentials, 'is_deleted', '0');
+    }
+
+    public function authenticated($request, User $user)
+    {
+        if (!$user->is_deleted) {
+            return redirect()->intended($this->redirectPath());
+        } else {
+            dd("error");
+        }
+    }
 
     /**
      * Get a validator for an incoming registration request.
