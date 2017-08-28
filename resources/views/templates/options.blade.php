@@ -24,8 +24,8 @@
 		<span class="sr-only">Toggle Dropdown</span>
 	</button>
 	<ul style="visibility: {{ App\SUtils\SValidation::isRendered(\Config::get('scsys.OPERATION.EDIT'), $actualUserPermission, $v_created_by) }};" class="dropdown-menu" role="menu">
-		@if ($oRegistry->is_deleted == \Config::get('scsys.STATUS.DEL') &&
-																	App\SUtils\SValidation::isRenderedB(\Config::get('scsys.OPERATION.DEL'), $actualUserPermission, $v_created_by))
+		@if ($oRegistry->is_deleted == \Config::get('scsys.STATUS.DEL')
+									&& App\SUtils\SValidation::isRenderedB(\Config::get('scsys.OPERATION.DEL'), $actualUserPermission, $v_created_by))
 			<li>
 				<a href="{{ route($sRoute.'.activate', $v_id) }}">
 					<i class="glyphicon glyphicon-ok-sign"></i>

@@ -4,6 +4,7 @@
 
 	return [
 
+		'SYS' => 'MRP',
 		'SYSTEM' => 'Manufacturing Resources Planning',
 		'HOME' => 'Inicio',
 		'HELP' => 'Ayuda',
@@ -11,6 +12,11 @@
 		'ADMINISTRATOR' => 'Administrador',
 		'MODULES' => 'Módulos',
 		'COMPANIES' => 'Empresas',
+		'USERS' => 'Usuarios',
+		'PRIVILEGES' => 'Privilegios',
+		'USER_PERMISSIONS' => 'Asignación de permisos',
+		'PERMISSIONS' => 'Permisos',
+		'CATALOGUES' => 'Catálogos',
 
 		'administration' =>	[
 													'MSG_YES' => 'Sí',
@@ -22,6 +28,7 @@
 											'LIST_PERMISSIONS' => 'Lista de permisos',
 											'LIST_ASSIGNAMENTS' => 'Lista de asignaciones',
 											'LIST_PRIVILEGES' => 'Lista de privilegios',
+											'LIST_COMPANIES' => 'Lista de empresas',
 											'CREATE_USER' => 'Crear usuario',
 											'CREATE_PERMISSION' => 'Crear usuario',
 											'CREATE_ASSIGNAMENT' => 'Crear asignación',
@@ -30,6 +37,7 @@
 											'EDIT_PERMISSION' => 'Editar permiso',
 											'EDIT_ASSIGNAMENT' => 'Editar asignación',
 											'EDIT_PRIVILEGE' => 'Editar privilegio',
+											'EDIT_COMPANY' => 'Editar privilegio',
 											'SELECT_COMPANY' => 'Seleccione empresa:',
 											'SELECT_MODULE' => 'Seleccione Módulo',
 											],
@@ -47,7 +55,14 @@
 		'placeholders' 	=> 	[
 											'SEARCH' => 'Buscar...',
 							 				'NAME' => 'Nombre...',
+							 				'COMPANY' => 'Empresa...',
 							 				'EMAIL' => 'example@gmail.com',
+							 				'DB_NAME' => 'Nombre de base de datos...',
+							 				'DB_HOST' => 'Host...',
+							 				'DB_PORT' => 'Puerto...',
+							 				'DB_USER' => 'Usuario...',
+							 				'DB_PASS' => 'Contraseña...',
+							 				'DB_SCH' => 'Esquema por default',
 											'SELECT_TYPE' => 'Seleccione tipo...',
 											'SELECT_USER' => 'Seleccione usuario...',
 											'SELECT_PERMISSION' => 'Seleccione permiso...',
@@ -71,9 +86,19 @@
 											'PRIVILEGE' => 'Privilegio',
 											'ASSIGNAMENT' => 'Tipo',
 											'STATUS' => 'Estatus',
+											'COMPANY' => 'Empresa',
+											'DB_NAME' => 'Nombre de base de datos',
+							 				'DB_HOST' => 'Host',
+							 				'DB_PORT' => 'Puerto',
+							 				'DB_USER' => 'Usuario',
+							 				'DB_PASS' => 'Contraseña',
+							 				'DB_SCH' => 'Esquema por default',
 											'ACTION' => 'Acción',
 											'ACTIVE' => 'Activo',
-											'INACTIVE' => 'Inactivo'
+											'ACTIVES' => 'Activos',
+											'INACTIVE' => 'Inactivo',
+											'INACTIVES' => 'Inactivos',
+											'ALL' => 'Todos',
 										]
 
 	];

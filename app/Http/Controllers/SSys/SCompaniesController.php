@@ -4,38 +4,34 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\SSys\SCompany;
+use Laracasts\Flash\Flash;
 
 class SCompaniesController extends Controller
 {
+      private $iFilter;
+
+      public function __construct()
+      {
+         $this->middleware('mdadmin');
+         $this->iFilter = \Config::get('scsys.FILTER.ACTIVES');
+      }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-    }
+     public function index(Request $request)
+     {
+         $this->iFilter = $request->filter == null ? \Config::get('scsys.FILTER.ACTIVES') : $request->filter;
+         $lCompanies = SCompany::Search($request->name, $this->iFilter)->orderBy('name', 'ASC')->paginate(10);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+         return view('companies.index')
+             ->with('companies', $lCompanies)
+             ->with('actualUserPermission', NULL)
+             ->with('iFilter', $this->iFilter);
+     }
 
     /**
      * Display the specified resource.
@@ -56,7 +52,10 @@ class SCompaniesController extends Controller
      */
     public function edit($id)
     {
-        //
+      $company = SCompany::find($id);
+
+      return view('companies.edit')->with('company', $company)
+                                      ->with('iFilter', $this->iFilter);
     }
 
     /**
@@ -68,7 +67,30 @@ class SCompaniesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $company = SCompany::find($id);
+      $company->fill($request->all());
+      $company->updated_by_id = \Auth::user()->id;
+      $company->save();
+
+      Flash::warning('La empresa '.$company->name.' ha sido editada con exito');
+
+      return redirect()->route('companies.index');
+    }
+
+    
+    public function activate(Request $request, $id)
+    {
+      $company = SCompany::find($id);
+
+      $company->fill($request->all());
+      $company->is_deleted = \Config::get('scsys.STATUS.ACTIVE');
+      $company->updated_by_id = \Auth::user()->id;
+
+      $company->save();
+
+      Flash::success("Se ha activado de forma exitosa!");
+
+      return redirect()->route('companies.index');
     }
 
     /**
@@ -77,8 +99,18 @@ class SCompaniesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+      $company = SCompany::find($id);
+      $company->fill($request->all());
+      $company->is_deleted = \Config::get('scsys.STATUS.DEL');
+      $company->updated_by_id = \Auth::user()->id;
+
+      $company->save();
+      #$user->delete();
+
+      Flash::error('La empresa '.$company->name. ' ha sido borrada de forma exitosa!');
+
+      return redirect()->route('companies.index');
     }
 }

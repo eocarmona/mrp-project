@@ -80,7 +80,6 @@ class SUserPermissionsController extends Controller
     public function store(Request $request)
     {
         $userPermission = new SUserPermission($request->all());
-        $userPermission->created_by_id = \Auth::user()->id;
 
         $userPermission->save();
 

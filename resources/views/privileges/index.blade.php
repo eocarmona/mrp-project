@@ -4,6 +4,9 @@
 
 @section('content')
 	<?php $ruta="privileges"?>
+	@section('create')
+		@include('front.templates.create')
+	@endsection
 	<table class="table table-striped">
 		<thead>
 			<th>{{ trans('userinterface.labels.NAME') }}</th>
@@ -15,7 +18,7 @@
 				<tr>
 					<td>{{ $privilege->name }}</td>
 					<td>
-						@if ($privilege->is_deleted == \Config::get('scsys.STATUS.ACTIVE'))
+						@if (! $privilege->is_deleted)
 								<span class="label label-success">{{ trans('userinterface.labels.ACTIVE') }}</span>
 						@else
 								<span class="label label-danger">{{ trans('userinterface.labels.INACTIVE') }}</span>

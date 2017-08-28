@@ -4,6 +4,9 @@
 
 @section('content')
 	<?php $ruta="users"?>
+	@section('create')
+		@include('front.templates.create')
+	@endsection
 	<table data-toggle="table" class="table table-striped">
 		<thead>
 			<th data-sortable="true">{{ trans('userinterface.labels.NAME') }}</th>
@@ -17,7 +20,7 @@
 					<td>{{ $user->username }}</td>
 					<td>{{ $user->email }}</td>
 					<td>
-						@if ($user->is_deleted == \Config::get('scsys.STATUS.ACTIVE'))
+						@if (! $user->is_deleted)
 								<span class="label label-success">{{ trans('userinterface.labels.ACTIVE') }}</span>
 						@else
 								<span class="label label-danger">{{ trans('userinterface.labels.INACTIVE') }}</span>

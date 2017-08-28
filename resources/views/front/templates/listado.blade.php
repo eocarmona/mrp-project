@@ -1,4 +1,3 @@
-<a href={{  route($ruta.'.create') }} class="btn btn-success btn-min" style="visibility: {{ App\SUtils\SValidation::isRendered(\Config::get('scsys.OPERATION.CREATE'), $actualUserPermission, 0) }};">Crear</a>
 {!! Form::open(['route' => [ $ruta.'.index'],'method' => 'GET', 'class' => 'navbar-form pull-right']) !!}
 	<div class="input-group">
 		{!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Buscar..', 'aria-describedby' => 'search']) !!}
@@ -7,9 +6,9 @@
 	<hr/>
 	<div>
 		{!! Form::select('filter', [
-										 \Config::get('scsys.FILTER.ACTIVES') => 'Activos',
-										 \Config::get('scsys.FILTER.DELETED') => 'Inactivos',
-										 \Config::get('scsys.FILTER.ALL') => 'Todos'
+										 \Config::get('scsys.FILTER.ACTIVES') => trans('userinterface.labels.ACTIVES'),
+										 \Config::get('scsys.FILTER.DELETED') => trans('userinterface.labels.INACTIVES'),
+										 \Config::get('scsys.FILTER.ALL') => trans('userinterface.labels.ALL')
 									 		],
 											$iFilter, ['class' => 'form-control', 'required']) !!}
 		{!! Form::button('<i class="glyphicon glyphicon-filter"></i>', array('type' => 'submit', 'class' => 'btn btn-primary')) !!}

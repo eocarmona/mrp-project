@@ -10,6 +10,7 @@
 				@include(config('laravel-menu.views.bootstrap-items'), array('items' => $sMenu->roots()))
 			</ul>
       @include('front.templates.userul')
+      @include('front.templates.navmodules')
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

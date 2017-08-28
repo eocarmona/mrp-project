@@ -1,28 +1,33 @@
 @extends('front.mainListado')
 
-@section('title', 'Lista de Empresas')
+@section('title', trans('userinterface.titles.LIST_COMPANIES'))
 
 @section('content')
-	<?php $ruta="companies/create"?>
-	<table data-sortable="true" class="table table-striped">
+	<?php $ruta="companies"?>
+	<table data-toggle="table" class="table table-striped">
 		<thead>
-			<th>Nombre Empreasa</th>
-			<th>RFC</th>
-			<th>Nombre Base de Datos</th>
-			<th>Accion</th>
+			<th>{{ trans('userinterface.labels.COMPANY') }}</th>
+			<th>{{ trans('userinterface.labels.DB_NAME') }}</th>
+			<th>{{ trans('userinterface.labels.DB_HOST') }}</th>
+			<th>{{ trans('userinterface.labels.ACTION') }}</th>
 		</thead>
 		<tbody>
 			@foreach($companies as $company)
 				<tr>
 					<td>{{ $company->name }}</td>
-					<td>{{ $company->rfc }}</td>
+					<td>{{ $company->database_name }}</td>
+					<td>{{ $company->host }}</td>
 					<td>
-						<a href="{{ route('companies.edit', $company->id) }}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"> </span></a>
-						<a href="{{ route('companies.destroy', $company->id) }}" onclick="return confirm('¿Seguro que deseas eliminarlo?');" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+						<?php
+								$oRegistry = $company;
+								$sRoute = 'companies';
+								$iRegistryId = $company->id_company;
+						?>
+						@include('templates.options')
 					</td>
 				</tr>
 			@endforeach
 		</tbody>
 	</table>
-	{!! $company->render() !!}
+	{!! $companies->render() !!}
 @endsection

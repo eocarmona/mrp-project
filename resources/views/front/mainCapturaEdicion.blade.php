@@ -28,9 +28,10 @@
 		<div class="col-md-4">
 		</div>
 	</div>
+	<br />
 	</div>
 	</div>
-
+<br />
 	<script src="{{ asset('/jquery/js/jquery-3.2.1.js')}}"></script>
 	<script src="{{ asset('bootstrap/js/bootstrap.js')}}"></script>
 	<script src="{{ asset('chosen/chosen.jquery.js') }}"></script>

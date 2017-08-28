@@ -4,6 +4,9 @@
 
 @section('content')
 	<?php $ruta="userPermissions"?>
+	@section('create')
+		@include('front.templates.create')
+	@endsection
 	<table data-toggle="table" class="table table-striped">
 		<thead>
 			<th data-sortable="true">Usuario</th>

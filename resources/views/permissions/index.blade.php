@@ -4,6 +4,9 @@
 
 @section('content')
 	<?php $ruta="permissions"?>
+	@section('create')
+		@include('front.templates.create')
+	@endsection
 	<table data-toggle="table" class="table table-striped">
 		<thead>
 			<th data-sortable="true">{{ trans('userinterface.labels.NAME') }}</th>
@@ -15,7 +18,7 @@
 				<tr>
 					<td>{{ $permission->name }}</td>
 					<td>
-						@if ($permission->is_deleted == \Config::get('scsys.STATUS.ACTIVE'))
+						@if (! $permission->is_deleted)
 								<span class="label label-success">{{ trans('userinterface.labels.ACTIVE') }}</span>
 						@else
 								<span class="label label-danger">{{ trans('userinterface.labels.INACTIVE') }}</span>

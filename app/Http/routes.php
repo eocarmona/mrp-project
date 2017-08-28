@@ -86,6 +86,16 @@ Route::group(['middleware' => ['auth']], function() {
 			'as' => 'userPermissions.destroy'
 		]);
 
+    Route::resource('companies','SSys\SCompaniesController');
+    Route::get('companies/{id}/destroy',[
+			'uses' => 'SSys\SCompaniesController@Destroy',
+			'as' => 'companies.destroy'
+		]);
+    Route::get('companies/{id}/activate', [
+			'uses' => 'SSys\SCompaniesController@Activate',
+			'as' => 'companies.activate'
+		]);
+
 	});
 
 //****************************************/ Company /*************************
