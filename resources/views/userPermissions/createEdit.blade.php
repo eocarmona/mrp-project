@@ -1,17 +1,17 @@
 @extends('front.mainCapturaEdicion')
 @if(isset($assignament))
 	<?php
-		$ruta='assignaments.update';
+		$ruta='userPermissions.update';
 		$aux=$assignament;
 	?>
 	@section('title', trans('userinterface.titles.EDIT_ASSIGNAMENT'))
 @else
 	<?php
-		$ruta='assignaments.store';
+		$ruta='userPermissions.store';
 	?>
 	@section('title', trans('userinterface.titles.CREATE_ASSIGNAMENT'))
 @endif
-	<?php $ruta2='assignaments.index' ?>
+	<?php $ruta2='userPermissions.index' ?>
 
 @section('content')
 
