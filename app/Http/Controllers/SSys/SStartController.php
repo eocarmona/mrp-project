@@ -40,13 +40,14 @@ class SStartController extends Controller
 
         session(['company' => $oCompany]);
 
-        \Config::set('database.connections.mrp.host', $oCompany->host);
-        \Config::set('database.connections.mrp.username', $oCompany->database_user);
-        \Config::set('database.connections.mrp.password', $oCompany->password);
-        \Config::set('database.connections.mrp.database', $oCompany->database_name);
+        $sConnection = 'mrp';
+        $bDefault = false;
+        $sHost = $oCompany->host;
+        $sDataBase = $oCompany->database_name;
+        $sUser = $oCompany->database_user;
+        $sPassword = $oCompany->password;
 
-        #\Config::set('database.default', 'mrp');
-        \DB::reconnect('mrp');
+        SUtil::reconnectDataBase($sConnection, $bDefault, $sHost, $sDataBase, $sUser, $sPassword);
 
         return SStartController::selectModule();
     }
