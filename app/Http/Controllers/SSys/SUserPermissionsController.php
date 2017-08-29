@@ -117,7 +117,7 @@ class SUserPermissionsController extends Controller
 
           $users = User::orderBy('username', 'ASC')->lists('username', 'id');
           $permissions = SPermission::orderBy('name', 'ASC')->lists('name', 'id_permission');
-          $privileges = SPrivilege::orderBy('id', 'ASC')->lists('name', 'id_privilege');
+          $privileges = SPrivilege::orderBy('name', 'ASC')->lists('name', 'id_privilege');
 
           return view('userPermissions.createEdit')
             ->with('userPermission', $userPermission)

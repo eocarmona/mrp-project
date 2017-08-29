@@ -24,7 +24,7 @@
 						<?php
 								$oRegistry = $userPermission;
 								$sRoute = 'userPermissions';
-								$iRegistryId = $userPermission->id_privilege;
+								$iRegistryId = $userPermission->id_usr_per;
 						?>
 						@include('templates.options')
 					</td>
