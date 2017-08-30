@@ -18,8 +18,8 @@ class SUsersController extends Controller
 
     public function __construct()
     {
-         $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.VIEW').','.\Config::get('sperm.VIEW_CODE.USERS'));
          $this->middleware('mdadmin');
+         $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.VIEW').','.\Config::get('sperm.VIEW_CODE.USERS'));
 
          $this->oCurrentUserPermission = SUtil::getTheUserPermission(\Auth::user()->id, \Config::get('scperm.VIEW_CODE.USERS'));
 
