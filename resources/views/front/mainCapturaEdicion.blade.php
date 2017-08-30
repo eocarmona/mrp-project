@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-	@include('front.head')
+	@include('front.templates.head')
 <body>
 			@include('front.templates.menu')
 
@@ -32,10 +32,7 @@
 	</div>
 	</div>
 <br />
-	<script src="{{ asset('/jquery/js/jquery-3.2.1.js')}}"></script>
-	<script src="{{ asset('bootstrap/js/bootstrap.js')}}"></script>
-	<script src="{{ asset('chosen/chosen.jquery.js') }}"></script>
-	<script src="{{ asset('Trumbowyg/dist/trumbowyg.min.js') }}"></script>
+	@include('front.templates.scripts')
 
 	@yield('js')
 

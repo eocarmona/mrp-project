@@ -21,7 +21,7 @@ class SMAdmin
         }
         else
         {
-          return response('Unauthorized.', 401);
+          return redirect()->route('notauthorized');
         }
 
     }

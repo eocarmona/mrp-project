@@ -57,7 +57,7 @@ class SUsersController extends Controller
           }
           else
           {
-             return response('Unauthorized.', 401);
+             return redirect()->route('notauthorized');
           }
     }
 
@@ -75,7 +75,7 @@ class SUsersController extends Controller
         $user->updated_by_id =\Auth::user()->id;
 #        dd($user);
         $user->save();
-        Flash::success("Se ha registrado ".$user->username. " de forma exitosa!");
+        Flash::success(trans('messages.REG_CREATED'));
 
         return redirect()->route('users.index');
     }
@@ -110,7 +110,7 @@ class SUsersController extends Controller
       }
       else
       {
-          return response('Unauthorized.', 401);
+          return redirect()->route('notauthorized');
       }
     }
 
@@ -128,7 +128,7 @@ class SUsersController extends Controller
         $user->updated_by_id = \Auth::user()->id;
         $user->save();
 
-        Flash::warning('El usuario'  . $user->username . ' ha sido editado con exito');
+        Flash::warning(trans('messages.REG_EDITED'));
         return redirect()->route('users.index');
     }
 
@@ -141,7 +141,7 @@ class SUsersController extends Controller
 
       $user->save();
 
-      Flash::success("Se ha activado de forma exitosa!");
+      Flash::success(trans('messages.REG_ACTIVATED'));
 
       return redirect()->route('users.index');
     }
@@ -164,12 +164,12 @@ class SUsersController extends Controller
         $user->save();
         #$user->delete();
 
-        Flash::error('El usuario '.$user->username. ' ha sido borrado de forma exitosa!');
+        Flash::error(trans('messages.REG_DELETED'));
         return redirect()->route('users.index');
       }
       else
       {
-        return response('Unauthorized.', 401);
+        return redirect()->route('notauthorized');
       }
     }
 }

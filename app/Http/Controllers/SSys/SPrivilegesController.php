@@ -50,7 +50,7 @@ class SPrivilegesController extends Controller
         }
         else
         {
-           return response('Unauthorized.', 401);
+           return redirect()->route('notauthorized');
         }
     }
 
@@ -65,7 +65,7 @@ class SPrivilegesController extends Controller
         $privilege = new SPrivilege($request->all());
         $privilege->save();
 
-        Flash::success("Se ha registrado ".$privilege->name." de forma exitosa!");
+        Flash::success(trans('messages.REG_CREATED'));
 
         return redirect()->route('privileges.index');
     }
@@ -99,7 +99,7 @@ class SPrivilegesController extends Controller
         }
         else
         {
-            return response('Unauthorized.', 401);
+            return redirect()->route('notauthorized');
         }
     }
 
@@ -116,7 +116,7 @@ class SPrivilegesController extends Controller
         $privilege->fill($request->all());
         $privilege->save();
 
-        Flash::warning('El privilegio ' .$privilege->name. ' ha sido editado con exito');
+        Flash::warning(trans('messages.REG_EDITED'));
         return redirect()->route('privileges.index');
     }
 
@@ -129,7 +129,7 @@ class SPrivilegesController extends Controller
 
       $privilege->save();
 
-      Flash::success("Se ha activado de forma exitosa!");
+      Flash::success(trans('messages.REG_ACTIVATED'));
 
       return redirect()->route('privileges.index');
     }
@@ -151,13 +151,13 @@ class SPrivilegesController extends Controller
 
         $privilege->save();
         #$privilege->delete();
-        Flash::error('El privilegio ha sido borrado de forma exitosa!');
+        Flash::error(trans('messages.REG_DELETED'));
 
         return redirect()->route('privileges.index');
       }
       else
       {
-        return response('Unauthorized.', 401);
+        return redirect()->route('notauthorized');
       }
     }
 }

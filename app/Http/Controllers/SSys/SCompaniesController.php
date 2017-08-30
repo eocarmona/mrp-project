@@ -72,12 +72,12 @@ class SCompaniesController extends Controller
       $company->updated_by_id = \Auth::user()->id;
       $company->save();
 
-      Flash::warning('La empresa '.$company->name.' ha sido editada con exito');
+      Flash::warning(trans('messages.REG_EDITED'));
 
       return redirect()->route('companies.index');
     }
 
-    
+
     public function activate(Request $request, $id)
     {
       $company = SCompany::find($id);
@@ -88,7 +88,7 @@ class SCompaniesController extends Controller
 
       $company->save();
 
-      Flash::success("Se ha activado de forma exitosa!");
+      Flash::success(trans('messages.REG_ACTIVATED'));
 
       return redirect()->route('companies.index');
     }
@@ -109,7 +109,7 @@ class SCompaniesController extends Controller
       $company->save();
       #$user->delete();
 
-      Flash::error('La empresa '.$company->name. ' ha sido borrada de forma exitosa!');
+      Flash::error(trans('messages.REG_DELETED'));
 
       return redirect()->route('companies.index');
     }

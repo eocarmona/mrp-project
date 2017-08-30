@@ -9,9 +9,9 @@
 	@endsection
 	<table data-toggle="table" class="table table-striped">
 		<thead>
-			<th data-sortable="true">Usuario</th>
-			<th data-sortable="true">Permiso</th>
-      <th data-sortable="true">Privilegio</th>
+			<th data-sortable="true">{{ trans('userinterface.labels.USER') }}</th>
+			<th data-sortable="true">{{ trans('userinterface.labels.PERMISSION') }}</th>
+      <th data-sortable="true">{{ trans('userinterface.labels.PRIVILEGE') }}</th>
       <th>Acciones</th>
 		</thead>
 		<tbody>

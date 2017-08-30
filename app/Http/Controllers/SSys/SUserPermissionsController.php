@@ -67,7 +67,7 @@ class SUserPermissionsController extends Controller
         }
         else
         {
-           return response('Unauthorized.', 401);
+           return redirect()->route('notauthorized');
         }
     }
 
@@ -83,7 +83,7 @@ class SUserPermissionsController extends Controller
 
         $userPermission->save();
 
-        Flash::success("Se ha registrado de forma exitosa!");
+        Flash::success(trans('messages.REG_CREATED'));
 
         return redirect()->route('userPermissions.index');
     }
@@ -127,7 +127,7 @@ class SUserPermissionsController extends Controller
         }
         else
         {
-            return response('Unauthorized.', 401);
+            return redirect()->route('notauthorized');
         }
     }
 
@@ -144,7 +144,7 @@ class SUserPermissionsController extends Controller
       $userPermission->fill($request->all());
       $userPermission->save();
 
-      Flash::success("Se ha editado de forma exitosa!");
+      Flash::success(trans('messages.REG_EDITED'));
 
       return redirect()->route('userPermissions.index');
     }
@@ -158,7 +158,7 @@ class SUserPermissionsController extends Controller
 
       $userPermission->save();
 
-      Flash::success("Se ha activado de forma exitosa!");
+      Flash::success(trans('messages.REG_ACTIVATED'));
 
       return redirect()->route('userPermissions.index');
     }
@@ -180,13 +180,13 @@ class SUserPermissionsController extends Controller
 
             $userPermission->save();
             #$userPermission->delete();
-            Flash::error('Ha sido borrado de forma exitosa!');
+            Flash::error(trans('messages.REG_DELETED'));
 
             return redirect()->route('userPermissions.index');
         }
         else
         {
-            return response('Unauthorized.', 401);
+            return redirect()->route('notauthorized');
         }
     }
 }

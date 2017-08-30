@@ -1,4 +1,4 @@
 <a href={{  route($ruta.'.create') }} class="btn btn-success btn-min"
       style="visibility: {{ App\SUtils\SValidation::isRendered(\Config::get('scsys.OPERATION.CREATE'), $actualUserPermission, 0) }};">
-      Crear
+      {{ trans('actions.CREATE') }}
 </a>

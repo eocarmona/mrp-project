@@ -61,7 +61,7 @@ class SUserCompanyController extends Controller
         }
         else
         {
-           return response('Unauthorized.', 401);
+           return redirect()->route('notauthorized');
         }
     }
 
@@ -78,7 +78,7 @@ class SUserCompanyController extends Controller
 
         $userCompany->save();
 
-        Flash::success("Se ha registrado de forma exitosa!");
+        Flash::success(trans('messages.REG_CREATED'));
 
         return redirect()->route('userCompany.index');
     }
@@ -119,7 +119,7 @@ class SUserCompanyController extends Controller
           }
           else
           {
-              return response('Unauthorized.', 401);
+              return redirect()->route('notauthorized');
           }
     }
 
@@ -136,10 +136,11 @@ class SUserCompanyController extends Controller
       $userCompany->fill($request->all());
       $userCompany->save();
 
-      Flash::success("Se ha editado de forma exitosa!");
+      Flash::success(trans('messages.REG_EDITED'));
 
       return redirect()->route('userCompany.index');
     }
+
 
     public function activate(Request $request, $id)
     {
@@ -150,7 +151,7 @@ class SUserCompanyController extends Controller
 
       $userCompany->save();
 
-      Flash::success("Se ha activado de forma exitosa!");
+      Flash::success(trans('messages.REG_ACTIVATED'));
 
       return redirect()->route('userCompany.index');
     }
@@ -172,13 +173,13 @@ class SUserCompanyController extends Controller
 
             $userCompany->save();
             #$userCompany->delete();
-            Flash::error('Ha sido borrado de forma exitosa!');
+            Flash::error(trans('messages.REG_DELETED'));
 
             return redirect()->route('userCompany.index');
         }
         else
         {
-            return response('Unauthorized.', 401);
+            return redirect()->route('notauthorized');
         }
     }
 }

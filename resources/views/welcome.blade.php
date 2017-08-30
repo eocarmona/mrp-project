@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-	@include('front.head')
+	@include('front.templates.head')
 <body>
 	<br />
 	<div class="container">

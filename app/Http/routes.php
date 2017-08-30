@@ -14,6 +14,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/notfound', ['as' => 'notfound',
+function () {
+    return view('errors.404');
+}]);
+
+Route::get('/notauthorized', ['as' => 'notauthorized',
+function () {
+    return view('errors.401');
+}]);
+
 Route::group(['middleware' => ['auth']], function() {
 
 //****************************************/ Start/*************************

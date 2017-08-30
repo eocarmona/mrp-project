@@ -50,7 +50,7 @@ class SPermissionsController extends Controller
         }
         else
         {
-          return response('Unauthorized.', 401);
+          return redirect()->route('notauthorized');
         }
     }
 
@@ -65,7 +65,7 @@ class SPermissionsController extends Controller
         $permission = new SPermission($request->all());
         $permission->save();
 
-        Flash::success("Se ha registrado ".$permission->name. " de forma exitosa!");
+        Flash::success(trans('messages.REG_CREATED'));
 
         return redirect()->route('permissions.index');
     }
@@ -98,7 +98,7 @@ class SPermissionsController extends Controller
         }
         else
         {
-          return response('Unauthorized.', 401);
+          return redirect()->route('notauthorized');
         }
     }
 
@@ -115,7 +115,7 @@ class SPermissionsController extends Controller
         $permission->fill($request->all());
         $permission->save();
 
-        Flash::warning('El permiso ' .$permission->name. ' ha sido editado con exito');
+        Flash::warning(trans('messages.REG_EDITED'));
         return redirect()->route('permissions.index');
     }
 
@@ -150,13 +150,13 @@ class SPermissionsController extends Controller
 
           $permission->save();
           #$permission->delete();
-          Flash::error('El permiso '.$permission->name. ' ha sido borrado de forma exitosa!');
+          Flash::error(trans('messages.REG_DELETED'));
 
           return redirect()->route('permissions.index');
         }
         else
         {
-          return response('Unauthorized.', 401);
+          return redirect()->route('notauthorized');
         }
     }
 }
