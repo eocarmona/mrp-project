@@ -19,6 +19,8 @@ class SUtil {
    */
   public static function getTheUserPermission($id_user, $identifier)
   {
+      \Config::set('database.connections.mrp.database', session('company')->database_name);
+
       if (\Auth::user()->user_type_id == \Config::get('scsys.TP_USER.ADMIN'))
       {
           $userPermission = new SUserPermission();

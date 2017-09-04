@@ -10,10 +10,14 @@
       $lDataBases = array();
 
       $i = 0;
-      $lDataBases[$i++] = 'prueba';
-      $lDataBases[$i++] = 'prueba1';
-      $lDataBases[$i++] = 'prueba2';
+      $lDataBases[$i++] = 'mrp_cartro';
+      $lDataBases[$i++] = 'mrp_aeth';
 
       return $lDataBases;
+    }
+
+    public static function getConnSys()
+    {
+      return 'ssystem';
     }
   }

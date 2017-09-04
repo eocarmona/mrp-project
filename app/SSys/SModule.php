@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SModule extends Model
 {
+  protected $connection = 'ssystem';
   protected $primaryKey = 'id_module';
   protected $table = "syss_modules";
   protected $fillable = ['id_module','name'];

@@ -146,6 +146,12 @@ Route::group(['middleware' => ['auth']], function() {
 		]);
 		Route::resource('tms','STMS\SShipmentsController');
 
+//****************************************/ Mrp /*************************
+    Route::get('/mrp/companies',[
+      'as' => 'mrp.companies',
+      'uses' => 'SMRP\SMrpCompaniesController@Index'
+    ]);
+    Route::resource('mrp.companies','SMRP\SMrpCompaniesController');
 
 	});
 });

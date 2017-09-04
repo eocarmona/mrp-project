@@ -12,7 +12,7 @@ class AddPermissionsTable extends Migration
      */
     public function up()
     {
-      Schema::create('syss_permission_types', function (blueprint $table) {
+      Schema::connection('ssystem')->create('syss_permission_types', function (blueprint $table) {
       	$table->increments('id_type');
       	$table->char('name', 100);
       	$table->boolean('is_deleted');
@@ -25,7 +25,7 @@ class AddPermissionsTable extends Migration
         ['id_type' => '4','name' => 'Vista', 'is_deleted' => '0'],
       ]);
 
-      Schema::create('syss_permissions', function (blueprint $table) {
+      Schema::connection('ssystem')->create('syss_permissions', function (blueprint $table) {
       	$table->increments('id_permission');
       	$table->char('code_mrp', 50);
       	$table->char('name', 100);

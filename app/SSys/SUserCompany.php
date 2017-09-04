@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SUserCompany extends Model
 {
+  protected $connection = 'ssystem';
   protected $primaryKey = 'id_usr_comp';
   protected $table = "sys_user_companies";
   protected $fillable = ['id_usr_comp','user_id','company_id'];

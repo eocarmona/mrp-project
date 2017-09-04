@@ -12,7 +12,7 @@ class AddConfigurationsTable extends Migration
      */
     public function up()
     {
-      Schema::create('sys_configuration', function (blueprint $table) {
+      Schema::connection('ssystem')->create('sys_configuration', function (blueprint $table) {
       	$table->increments('id_conf');
       	$table->char('version', 20);
       	$table->timestamps();

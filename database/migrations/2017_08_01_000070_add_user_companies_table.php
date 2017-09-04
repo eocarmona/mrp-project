@@ -12,7 +12,7 @@ class AddUserCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sys_user_companies', function (blueprint $table) {
+        Schema::connection('ssystem')->create('sys_user_companies', function (blueprint $table) {
         	$table->increments('id_usr_comp');
         	$table->integer('user_id')->unsigned();
         	$table->integer('company_id')->unsigned();

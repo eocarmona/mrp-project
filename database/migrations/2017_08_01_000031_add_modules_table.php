@@ -12,7 +12,7 @@ class AddModulesTable extends Migration
      */
     public function up()
     {
-      Schema::create('syss_modules', function (blueprint $table) {
+      Schema::connection('ssystem')->create('syss_modules', function (blueprint $table) {
       	$table->increments('id_module');
       	$table->char('name', 100);
       	$table->boolean('is active');

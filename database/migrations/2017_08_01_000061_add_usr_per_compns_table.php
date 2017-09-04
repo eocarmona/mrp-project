@@ -12,7 +12,7 @@ class AddUsrPerCompnsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sys_usr_per_cmpns', function (blueprint $table) {
+        Schema::connection('ssystem')->create('sys_usr_per_cmpns', function (blueprint $table) {
         	$table->increments('id_usr_per_comp');
         	$table->integer('user_id')->unsigned();
         	$table->integer('permission_id')->unsigned();

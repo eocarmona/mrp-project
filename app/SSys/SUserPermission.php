@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SUserPermission extends Model
 {
+  protected $connection = 'ssystem';
   protected $primaryKey = 'id_usr_per';
   protected $table = "sys_user_permissions";
   public $timestamps = false;

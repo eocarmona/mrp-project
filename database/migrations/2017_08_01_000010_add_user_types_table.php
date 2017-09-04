@@ -12,7 +12,7 @@ class AddUserTypesTable extends Migration
      */
     public function up()
     {
-      Schema::create('syss_user_types', function (blueprint $table) {
+      Schema::connection('ssystem')->create('syss_user_types', function (blueprint $table) {
       	$table->increments('id_type');
       	$table->char('name', 100);
       	$table->boolean('is_deleted');

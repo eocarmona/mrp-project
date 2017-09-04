@@ -41,7 +41,7 @@ class SStartController extends Controller
         session(['company' => $oCompany]);
 
         $sConnection = 'mrp';
-        $bDefault = false;
+        $bDefault = true;
         $sHost = $oCompany->host;
         $sDataBase = $oCompany->database_name;
         $sUser = $oCompany->database_user;

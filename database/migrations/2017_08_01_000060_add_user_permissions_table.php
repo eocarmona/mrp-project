@@ -12,12 +12,12 @@ class AddUserPermissionsTable extends Migration
      */
     public function up()
     {
-      Schema::create('sys_user_permissions', function (blueprint $table) {
+      Schema::connection('ssystem')->create('sys_user_permissions', function (blueprint $table) {
       	$table->increments('id_usr_per');
       	$table->integer('user_id')->unsigned();
       	$table->integer('permission_id')->unsigned();
       	$table->integer('privilege_id')->unsigned();
-      	
+
       	$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
       	$table->foreign('permission_id')->references('id_module')->on('syss_modules')->onDelete('cascade');
       	$table->foreign('privilege_id')->references('id_privilege')->on('syss_privileges')->onDelete('cascade');

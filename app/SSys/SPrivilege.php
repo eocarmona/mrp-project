@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SPrivilege extends Model
 {
+  protected $connection = 'ssystem';
   protected $primaryKey = 'id_privilege';
   protected $table = "syss_privileges";
   protected $fillable = ['id_privilege','name'];

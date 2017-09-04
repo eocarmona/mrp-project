@@ -12,7 +12,7 @@ class AddCompaniesTable extends Migration
      */
     public function up()
     {
-      Schema::create('sys_companies', function (blueprint $table) {
+      Schema::connection('ssystem')->create('sys_companies', function (blueprint $table) {
       	$table->increments('id_company');
       	$table->char('name', 100);
       	$table->char('database_name', 100);

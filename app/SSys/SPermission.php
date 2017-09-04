@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SPermission extends Model
 {
+  protected $connection = 'ssystem';
   protected $primaryKey = 'id_permission';
   protected $table = "syss_permissions";
   protected $fillable = ['id_permission','name'];

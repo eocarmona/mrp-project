@@ -12,7 +12,7 @@ class AddCompanyModulesTable extends Migration
      */
     public function up()
     {
-      Schema::create('syss_company_modules', function (blueprint $table) {
+    Schema::connection('ssystem')->create('syss_company_modules', function (blueprint $table) {
       	$table->increments('id_com_mod');
       	$table->boolean('is_deleted');
       	$table->integer('company_id')->unsigned();
