@@ -17,7 +17,7 @@ class SPermissionsController extends Controller
       {
            $this->middleware('mdadmin');
            $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.VIEW').','.\Config::get('scperm.VIEW_CODE.PERMISSIONS'));
-           $this->oCurrentUserPermission = SUtil::getTheUserPermission(\Auth::user()->id, \Config::get('scperm.VIEW_CODE.PERMISSIONS'));
+           $this->oCurrentUserPermission = SUtil::getTheUserPermission(!\Auth::check() ? \Config::get('scsys.UNDEFINED') : \Auth::user()->id, \Config::get('scperm.VIEW_CODE.PERMISSIONS'));
 
            $this->iFilter = \Config::get('scsys.FILTER.ACTIVES');
       }

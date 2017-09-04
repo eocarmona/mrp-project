@@ -147,11 +147,19 @@ Route::group(['middleware' => ['auth']], function() {
 		Route::resource('tms','STMS\SShipmentsController');
 
 //****************************************/ Mrp /*************************
-    Route::get('/mrp/companies',[
-      'as' => 'mrp.companies',
-      'uses' => 'SMRP\SMrpCompaniesController@Index'
-    ]);
-    Route::resource('mrp.companies','SMRP\SMrpCompaniesController');
+    Route::group(['prefix' => 'mrp'], function () {
+
+      Route::resource('companies','SMRP\SMrpCompaniesController');
+      Route::get('companies/{id}/destroy',[
+        'uses' => 'SMRP\SMrpCompaniesController@Destroy',
+        'as' => 'mrp.companies.destroy'
+      ]);
+      Route::get('companies/{id}/activate', [
+        'uses' => 'SMRP\SMrpCompaniesController@Activate',
+        'as' => 'mrp.companies.activate'
+      ]);
+
+    });
 
 	});
 });

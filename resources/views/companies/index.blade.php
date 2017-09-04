@@ -9,6 +9,7 @@
 			<th>{{ trans('userinterface.labels.COMPANY') }}</th>
 			<th>{{ trans('userinterface.labels.DB_NAME') }}</th>
 			<th>{{ trans('userinterface.labels.DB_HOST') }}</th>
+			<th>{{ trans('userinterface.labels.STATUS') }}</th>
 			<th>{{ trans('userinterface.labels.ACTION') }}</th>
 		</thead>
 		<tbody>
@@ -17,6 +18,13 @@
 					<td>{{ $company->name }}</td>
 					<td>{{ $company->database_name }}</td>
 					<td>{{ $company->host }}</td>
+					<td>
+						@if (! $company->is_deleted)
+								<span class="label label-success">{{ trans('userinterface.labels.ACTIVE') }}</span>
+						@else
+								<span class="label label-danger">{{ trans('userinterface.labels.INACTIVE') }}</span>
+						@endif
+					</td>
 					<td>
 						<?php
 								$oRegistry = $company;

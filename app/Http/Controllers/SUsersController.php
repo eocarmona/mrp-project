@@ -21,7 +21,7 @@ class SUsersController extends Controller
          $this->middleware('mdadmin');
          $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.VIEW').','.\Config::get('sperm.VIEW_CODE.USERS'));
 
-         $this->oCurrentUserPermission = SUtil::getTheUserPermission(\Auth::user()->id, \Config::get('scperm.VIEW_CODE.USERS'));
+         $this->oCurrentUserPermission = SUtil::getTheUserPermission(!\Auth::check() ? \Config::get('scsys.UNDEFINED') : \Auth::user()->id, \Config::get('scperm.VIEW_CODE.USERS'));
 
          $this->iFilter = \Config::get('scsys.FILTER.ACTIVES');
     }
