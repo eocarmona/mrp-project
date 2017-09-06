@@ -6,8 +6,7 @@ use App\Database\OTF;
 use App\Database\Config;
 use App\SUtils\SUtil;
 
-class MrpAddMrpCompaniesTable extends Migration
-{
+class MrpAddMrpCompaniesTable extends Migration {
     private $lDatabases;
     private $sConnection;
     private $sDataBase;
