@@ -9,6 +9,11 @@ use App\SSys\SCompany;
 
 class SUtil {
 
+  public function __construct()
+  {
+
+  }
+
   /**
    * Return an UserPermission object with the privileges assigned.
    * If the type user is ADMIN returns an UserPermission object with all the privileges.
@@ -20,7 +25,7 @@ class SUtil {
   public static function getTheUserPermission($id_user, $identifier)
   {
       \Config::set('database.connections.mrp.database', session()->has('company') ? session('company')->database_name : "");
-
+      
       if (\Auth::check() && \Auth::user()->user_type_id == \Config::get('scsys.TP_USER.ADMIN'))
       {
           $userPermission = new SUserPermission();

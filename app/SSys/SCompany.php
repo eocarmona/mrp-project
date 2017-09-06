@@ -19,6 +19,11 @@ class SCompany extends Model {
       return $this->hasMany('App\SSys\SCoUsPermission');
     }
 
+    public function company()
+    {
+      return $this->hasOne('App\SMRP\SMrpCompany');
+    }
+
     public function scopeSearch($query, $name, $iFilter)
     {
         switch ($iFilter) {

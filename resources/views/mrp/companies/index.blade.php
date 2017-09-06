@@ -7,6 +7,7 @@
 	<table data-toggle="table" class="table table-striped">
 		<thead>
 			<th>{{ trans('userinterface.labels.COMPANY') }}</th>
+			<th>{{ trans('userinterface.labels.RFC') }}</th>
 			<th>{{ trans('userinterface.labels.STATUS') }}</th>
 			<th>{{ trans('userinterface.labels.ACTION') }}</th>
 		</thead>
@@ -14,6 +15,7 @@
 			@foreach($companies as $company)
 				<tr>
 					<td>{{ $company->name }}</td>
+					<td>{{ $company->rfc }}</td>
 					<td>
 						@if (! $company->is_deleted)
 								<span class="label label-success">{{ trans('userinterface.labels.ACTIVE') }}</span>

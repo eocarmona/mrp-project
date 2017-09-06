@@ -33,7 +33,6 @@ class MrpAddComBranchesTable extends Migration
      */
     public function up()
     {
-
         foreach ($this->lDatabases as $base) {
           $this->sDataBase = $base;
           SUtil::reconnectDataBase($this->sConnection, $this->bDefault, $this->sHost, $this->sDataBase, $this->sUser, $this->sPassword);
