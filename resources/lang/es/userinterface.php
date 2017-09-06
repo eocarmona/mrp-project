@@ -87,6 +87,7 @@
 											'ASSIGNAMENT' => 'Tipo',
 											'STATUS' => 'Estatus',
 											'COMPANY' => 'Empresa',
+											'RFC' => 'RFC',
 											'DB_NAME' => 'Nombre de base de datos',
 							 				'DB_HOST' => 'Host',
 							 				'DB_PORT' => 'Puerto',
