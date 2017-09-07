@@ -1,26 +1,30 @@
 @extends('front.mainListado')
+
 @section('menu')
 	@include('front.templates.menumodules')
 @endsection
 
-@section('title', trans('userinterface.titles.LIST_COMPANIES'))
+@section('title', trans('userinterface.titles.LIST_BRANCHES'))
 
 @section('content')
-	<?php $ruta="mrp.companies"?>
+	<?php $ruta="mrp.branches"?>
+	@section('create')
+		@include('front.templates.create')
+	@endsection
 	<table data-toggle="table" class="table table-striped">
 		<thead>
-			<th>{{ trans('userinterface.labels.COMPANY') }}</th>
-			<th>{{ trans('userinterface.labels.RFC') }}</th>
+			<th>{{ trans('userinterface.labels.CODE') }}</th>
+			<th>{{ trans('userinterface.labels.NAME') }}</th>
 			<th>{{ trans('userinterface.labels.STATUS') }}</th>
 			<th>{{ trans('userinterface.labels.ACTION') }}</th>
 		</thead>
 		<tbody>
-			@foreach($companies as $company)
+			@foreach($branches as $branch)
 				<tr>
-					<td>{{ $company->name }}</td>
-					<td>{{ $company->rfc }}</td>
+					<td>{{ $branch->code }}</td>
+					<td>{{ $branch->name }}</td>
 					<td>
-						@if (! $company->is_deleted)
+						@if (! $branch->is_deleted)
 								<span class="label label-success">{{ trans('userinterface.labels.ACTIVE') }}</span>
 						@else
 								<span class="label label-danger">{{ trans('userinterface.labels.INACTIVE') }}</span>
@@ -28,9 +32,9 @@
 					</td>
 					<td>
 						<?php
-								$oRegistry = $company;
-								$sRoute = 'mrp.companies';
-								$iRegistryId = $company->id_company;
+								$oRegistry = $branch;
+								$sRoute = 'mrp.branches';
+								$iRegistryId = $branch->id_branch;
 						?>
 						@include('templates.options')
 					</td>
@@ -38,5 +42,5 @@
 			@endforeach
 		</tbody>
 	</table>
-	{!! $companies->render() !!}
+	{!! $branches->render() !!}
 @endsection

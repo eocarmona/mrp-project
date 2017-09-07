@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\SUtils\SUtil;
+use App\SUtils\SMenu;
 
 class SShipmentsController extends Controller
 {
@@ -16,7 +17,9 @@ class SShipmentsController extends Controller
     {
        $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.MODULE').','.\Config::get('scperm.MODULES.TMS'));
 
-       $this->middleware('mdmenu:'.\Config::get('scperm.MODULES.TMS'));
+       $oMenu = new SMenu(\Config::get('scperm.MODULES.TMS'), 'navbar-blue-light');
+       session(['menu' => $oMenu]);
+       $this->middleware('mdmenu:'.(session()->has('menu') ? session('menu')->getMenu() : \Config::get('scsys.UNDEFINED')));
     }
 
     /**
@@ -31,10 +34,7 @@ class SShipmentsController extends Controller
       */
      public function home()
      {
-
-         $sClassNav = 'navbar-blue-light';
-
-         return view('tms.index')->with('sClassNav', $sClassNav);
+       return view('mms.index')->with('sClassNav', (session()->has('menu') ? session('menu')->getClassNav() : ''));
      }
 
     /**

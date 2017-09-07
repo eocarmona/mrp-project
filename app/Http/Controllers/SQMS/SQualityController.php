@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\SUtils\SUtil;
+use App\SUtils\SMenu;
 
 class SQualityController extends Controller
 {
@@ -16,7 +17,9 @@ class SQualityController extends Controller
     {
        $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.MODULE').','.\Config::get('scperm.MODULES.QMS'));
 
-       $this->middleware('mdmenu:'.\Config::get('scperm.MODULES.QMS'));
+       $oMenu = new SMenu(\Config::get('scperm.MODULES.QMS'), 'navbar-orange');
+       session(['menu' => $oMenu]);
+       $this->middleware('mdmenu:'.(session()->has('menu') ? session('menu')->getMenu() : \Config::get('scsys.UNDEFINED')));
     }
 
     /**
@@ -26,10 +29,7 @@ class SQualityController extends Controller
      */
     public function home()
     {
-
-        $sClassNav = 'navbar-orange';
-
-        return view('qms.index')->with('sClassNav', $sClassNav);
+        return view('mms.index')->with('sClassNav', (session()->has('menu') ? session('menu')->getClassNav() : ''));
     }
 
     /**

@@ -26,5 +26,7 @@ return [
                   'ASSIGNAMENTS' => '4',
                   'ACCESS' => '5',
                   'COMPANIES' => '6',
+                  'MRP_COMPANIES' => '7',
+                  'BRANCHES' => '8',
                 ],
 ];

@@ -39,7 +39,7 @@ class MrpAddMrpCompaniesTable extends Migration {
           Schema::connection($this->sConnection)->create('mrp_companies', function (blueprint $table) {
             $table->integer('id_company')->unsigned();
             $table->char('name', 100);
-            $table->char('RFC', 50);
+            $table->char('rfc', 50);
             $table->boolean('is_deleted');
             $table->integer('created_by_id')->unsigned();
             $table->integer('updated_by_id')->unsigned();

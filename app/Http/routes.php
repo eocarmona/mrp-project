@@ -159,6 +159,16 @@ Route::group(['middleware' => ['auth']], function() {
         'as' => 'mrp.companies.activate'
       ]);
 
+      Route::resource('branches','SMRP\SBranchesController');
+      Route::get('branches/{id}/destroy',[
+        'uses' => 'SMRP\SBranchesController@Destroy',
+        'as' => 'mrp.branches.destroy'
+      ]);
+      Route::get('branches/{id}/activate', [
+        'uses' => 'SMRP\SBranchesController@Activate',
+        'as' => 'mrp.branches.activate'
+      ]);
+
     });
 
 	});

@@ -2,21 +2,16 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class SMrpCompany extends Model {
+class SBranch extends Model {
 
   protected $connection = 'mrp';
-  protected $primaryKey = 'id_company';
-  protected $table = "mrp_companies";
-  protected $fillable = ['id_company', 'name'];
+  protected $primaryKey = 'id_branch';
+  protected $table = "mrp_company_branches";
+  protected $fillable = ['id_branch', 'code', 'name'];
 
   public function company()
   {
-    return $this->hasOne('App\SSys\SCompany');
-  }
-
-  public function branch()
-  {
-    return $this->hasMany('App\SMRP\SBranch');
+    return $this->belongsTo('App\SMRP\SMrpCompany');
   }
 
   public function scopeSearch($query, $name, $iFilter)

@@ -15,10 +15,12 @@ class SMrpCompaniesController extends Controller
 
     public function __construct()
     {
-         $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.VIEW').','.\Config::get('scperm.VIEW_CODE.PERMISSIONS'));
-         $this->oCurrentUserPermission = SUtil::getTheUserPermission(!\Auth::check() ? \Config::get('scsys.UNDEFINED') : \Auth::user()->id, \Config::get('scperm.VIEW_CODE.PERMISSIONS'));
+       $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.VIEW').','.\Config::get('scperm.VIEW_CODE.MRP_COMPANIES'));
+       $this->middleware('mdmenu:'.(session()->has('menu') ? session('menu')->getMenu() : \Config::get('scsys.UNDEFINED')));
 
-         $this->iFilter = \Config::get('scsys.FILTER.ACTIVES');
+       $this->oCurrentUserPermission = SUtil::getTheUserPermission(!\Auth::check() ? \Config::get('scsys.UNDEFINED') : \Auth::user()->id, \Config::get('scperm.VIEW_CODE.MRP_COMPANIES'));
+
+       $this->iFilter = \Config::get('scsys.FILTER.ACTIVES');
     }
 
     /**
@@ -33,7 +35,8 @@ class SMrpCompaniesController extends Controller
 
       return view('mrp.companies.index')
           ->with('companies', $lCompanies)
-          ->with('actualUserPermission', NULL)
+          ->with('actualUserPermission', $this->oCurrentUserPermission)
+          ->with('sClassNav', (session()->has('menu') ? session('menu')->getClassNav() : ''))
           ->with('iFilter', $this->iFilter);
     }
 

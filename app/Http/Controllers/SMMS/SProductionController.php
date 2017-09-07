@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\SUtils\SUtil;
+use App\SUtils\SMenu;
 
 class SProductionController extends Controller
 {
@@ -15,8 +16,10 @@ class SProductionController extends Controller
     public function __construct()
     {
        $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.MODULE').','.\Config::get('scperm.MODULES.MMS'));
+       $oMenu = new SMenu(\Config::get('scperm.MODULES.MMS'), 'navbar-blue');
+       session(['menu' => $oMenu]);
 
-       $this->middleware('mdmenu:'.\Config::get('scperm.MODULES.MMS'));
+       $this->middleware('mdmenu:'.(session()->has('menu') ? session('menu')->getMenu() : \Config::get('scsys.UNDEFINED')));
     }
 
     /**
@@ -26,10 +29,7 @@ class SProductionController extends Controller
      */
     public function home()
     {
-
-        $sClassNav = 'navbar-blue';
-
-        return view('mms.index')->with('sClassNav', $sClassNav);
+        return view('mms.index')->with('sClassNav', (session()->has('menu') ? session('menu')->getClassNav() : ''));
     }
 
     /**
