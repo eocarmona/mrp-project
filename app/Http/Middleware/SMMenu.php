@@ -48,11 +48,14 @@ class SMMenu
           \Menu::make('sMenu', function($menu){
               $menu->add(' ');
               $menu->add(trans('userinterface.HOME'), array('route' => 'wms.home'));
+              $menu->add(trans('mrp.MRP'), 'what-we-do')->nickname(trans('mrp.MRP'));
+              $menu->get(trans('mrp.MRP'))->add(trans('mrp.MRP_COMPANIES'), array('route' => 'mrp.companies.index'));
+              $menu->get(trans('mrp.MRP'))->add(trans('mrp.BRANCHES'), array('route' => 'mrp.branches.index'));
               $menu->add(trans('wms.CONFIG'), 'what-we-do')->nickname(trans('wms.CONFIG'));
               $menu->get(trans('wms.CONFIG'))->add(trans('wms.CONFIG'), 'what-we-do');
               $menu->get(trans('wms.CONFIG'))->add(trans('wms.CONFIG'), 'what-we-do');
               $menu->add(trans('wms.CATALOGUES'), 'what-we-do')->nickname(trans('wms.CATALOGUES'));
-              $menu->get(trans('wms.CATALOGUES'))->add(trans('wms.WAREHOUSES'), array('route' => 'mrp.companies.index'));
+              $menu->get(trans('wms.CATALOGUES'))->add(trans('wms.WAREHOUSES'), 'what-we-do');
               $menu->get(trans('wms.CATALOGUES'))->add(trans('wms.LOCATIONS'), 'what-we-do');
               $menu->get(trans('wms.CATALOGUES'))->add(trans('wms.PALLETS'), 'what-we-do');
               $menu->get(trans('wms.CATALOGUES'))->add(trans('wms.LOTS'), 'what-we-do');

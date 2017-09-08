@@ -10,7 +10,7 @@ return [
           'LOCATIONS' => 'Ubicaciones',
           'PALLETS' => 'Tarimas',
           'LOTS' => 'Lotes',
-          'BAR_CODES' => 'Códigos de barra',
+          'BAR_CODES' => 'Códigos de barras',
 
       'CONFIG' => 'Configuración',
           'CONFIG' => 'Configuración',

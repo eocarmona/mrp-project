@@ -25,8 +25,12 @@ return [
                   'EDIT' => '1',
                   'DEL' => '2'],
 
-  'STATUS' => ['ACTIVE' => '0',
-                'DEL' => '1'],
+  'STATUS' => [
+                'ACTIVE' => '0',
+                'DEL' => '1',
+                'CLOSED' => '1',
+                'OPENED' => '0',
+              ],
 
   'FILTER' => ['DELETED' => '1',
                 'ACTIVES' => '2',

@@ -88,6 +88,7 @@
 											'ALL' => 'Todos',
 											'ASSIGNAMENT' => 'Tipo',
 											'BRANCH' => 'Sucursal',
+											'CLOSED' => 'Cerrado',
 											'CODE' => 'Código',
 											'COMPANY' => 'Empresa',
 											'DB_HOST' => 'Host',
@@ -101,6 +102,7 @@
 											'INACTIVE' => 'Inactivo',
 											'INACTIVES' => 'Inactivos',
 											'NAME' => 'Nombre',
+											'OPENED' => 'Abierto',
 											'PASSWORD' => 'Contraseña',
 											'PERMISSION' => 'Permiso',
 											'PRIVILEGE' => 'Privilegio',
@@ -108,6 +110,7 @@
 											'STATUS' => 'Estatus',
 											'TYPE' => 'Tipo',
 											'USER' => 'Usuario',
+											'YEAR' => 'Año',
 
 										]
 

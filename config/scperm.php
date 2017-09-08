@@ -20,13 +20,15 @@ return [
                 ],
 
   'VIEW_CODE' => [
-                  'USERS' => '1',
-                  'PERMISSIONS' => '2',
-                  'PRIVILEGES' => '3',
-                  'ASSIGNAMENTS' => '4',
-                  'ACCESS' => '5',
-                  'COMPANIES' => '6',
-                  'MRP_COMPANIES' => '7',
-                  'BRANCHES' => '8',
+                  'USERS' => '001',
+                  'PERMISSIONS' => '002',
+                  'PRIVILEGES' => '003',
+                  'ASSIGNAMENTS' => '004',
+                  'ACCESS' => '005',
+                  'COMPANIES' => '006',
+                  'MRP_COMPANIES' => '007',
+                  'BRANCHES' => '008',
+                  'YEARS' => '009',
+                  'MONTHS' => '010',
                 ],
 ];

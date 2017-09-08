@@ -49,6 +49,11 @@ class MrpAddMrpCompaniesTable extends Migration {
             $table->foreign('created_by_id')->references('id')->on(DB::connection(Config::getConnSys())->getDatabaseName().'.'.'users')->onDelete('cascade');
             $table->foreign('updated_by_id')->references('id')->on(DB::connection(Config::getConnSys())->getDatabaseName().'.'.'users')->onDelete('cascade');
           });
+
+          DB::connection($this->sConnection)->table('mrp_companies')->insert([
+          	['id_company' => '1','name' => 'Cartro', 'is_deleted' => '0', 'created_by_id' => '1', 'updated_by_id' => '1'],
+          	['id_company' => '2','name' => 'AETH', 'is_deleted' => '0', 'created_by_id' => '1', 'updated_by_id' => '1'],
+          ]);
         }
     }
 

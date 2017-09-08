@@ -169,6 +169,16 @@ Route::group(['middleware' => ['auth']], function() {
         'as' => 'mrp.branches.activate'
       ]);
 
+      Route::resource('years','SMRP\SYearsController');
+      Route::get('years/{id}/destroy',[
+        'uses' => 'SMRP\SYearsController@Destroy',
+        'as' => 'mrp.years.destroy'
+      ]);
+      Route::get('years/{id}/activate', [
+        'uses' => 'SMRP\SYearsController@Activate',
+        'as' => 'mrp.years.activate'
+      ]);
+
     });
 
 	});
