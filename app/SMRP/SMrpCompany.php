@@ -14,7 +14,7 @@ class SMrpCompany extends Model {
     return $this->hasOne('App\SSys\SCompany');
   }
 
-  public function branch()
+  public function branches()
   {
     return $this->hasMany('App\SMRP\SBranch');
   }

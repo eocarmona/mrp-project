@@ -30,17 +30,21 @@
 											'LIST_PRIVILEGES' => 'Lista de privilegios',
 											'LIST_COMPANIES' => 'Lista de empresas',
 											'LIST_BRANCHES' => 'Lista de sucursales',
+											'LIST_YEARS' => 'Años',
+											'LIST_MONTHS' => 'Periodos',
 											'CREATE_USER' => 'Crear usuario',
 											'CREATE_PERMISSION' => 'Crear usuario',
 											'CREATE_ASSIGNAMENT' => 'Crear asignación',
 											'CREATE_PRIVILEGE' => 'Crear privilegio',
 											'CREATE_BRANCH' => 'Crear sucursal',
+											'CREATE_YEAR' => 'Crear año',
 											'EDIT_USER' => 'Editar usuario',
 											'EDIT_PERMISSION' => 'Editar permiso',
 											'EDIT_ASSIGNAMENT' => 'Editar asignación',
 											'EDIT_PRIVILEGE' => 'Editar privilegio',
 											'EDIT_COMPANY' => 'Editar privilegio',
 											'EDIT_BRANCH' => 'Editar sucursal',
+											'EDIT_YEAR' => 'Editar año',
 											'SELECT_COMPANY' => 'Seleccione empresa:',
 											'SELECT_MODULE' => 'Seleccione Módulo',
 											],
@@ -73,6 +77,8 @@
 											'PASSWORD' => '*********',
 											'CODE' => 'Código...',
 											'BRANCH' => 'Sucursal...',
+											'YEAR' => 'Año...',
+											'MONTH' => 'Mes...',
 											],
 
 		'tooltips'     	=>   [
@@ -111,6 +117,8 @@
 											'TYPE' => 'Tipo',
 											'USER' => 'Usuario',
 											'YEAR' => 'Año',
+											'MONTH' => 'Mes',
+											'PERIOD' => 'Periodo',
 
 										]
 

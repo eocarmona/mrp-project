@@ -6,7 +6,7 @@
 @section('title', trans('userinterface.titles.LIST_COMPANIES'))
 
 @section('content')
-	<?php $ruta="mrp.companies"?>
+	<?php $sRoute="mrp.companies"?>
 	<table data-toggle="table" class="table table-striped">
 		<thead>
 			<th>{{ trans('userinterface.labels.COMPANY') }}</th>

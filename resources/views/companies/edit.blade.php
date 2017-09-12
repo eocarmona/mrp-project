@@ -1,11 +1,11 @@
 @extends('front.mainCapturaEdicion')
 <?php
-    $ruta='companies.update';
+    $sRoute='companies.update';
     $aux=$company;
 ?>
 
 @section('title', trans('userinterface.titles.EDIT_COMPANY'))
-<?php $ruta2='companies.index' ?>
+<?php $sRoute2='companies.index' ?>
 
 @section('content')
 

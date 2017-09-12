@@ -1,4 +1,4 @@
-{!! Form::open(['route' =>[ $ruta, $aux], 'method' => 'PUT']) !!}
+{!! Form::open(['route' =>[ $sRoute, $aux], 'method' => 'PUT']) !!}
 	@yield('content')
 	<div class="form-group" align="right">
 			{!! Form::submit(trans('actions.EDIT'), ['class' => 'btn btn-primary']) !!}

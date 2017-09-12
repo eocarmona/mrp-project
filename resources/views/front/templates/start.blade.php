@@ -1,5 +1,5 @@
 
-{!! Form::open(['route' => $ruta, 'method' => 'POST', 'files' => true]) !!}
+{!! Form::open(['route' => $sRoute, 'method' => 'POST', 'files' => true]) !!}
 	@yield('content')
 	<div class="form-group" align="right">
 			{!! Form::submit('Entrar', ['class' => 'btn btn-primary', 'onclick' => 'getValue()']) !!}

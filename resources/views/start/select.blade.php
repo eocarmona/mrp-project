@@ -5,7 +5,7 @@
 
 @section('content')
   <?php
-    $ruta = "start.getIn";
+    $sRoute = "start.getIn";
     $i = 0;
   ?>
   <div class="form-group">

@@ -1,17 +1,17 @@
 @extends('front.mainCapturaEdicion')
 @if(isset($privilege))
 	<?php
-			$ruta='privileges.update';
+			$sRoute='privileges.update';
 			$aux=$privilege;
 	?>
 	@section('title', trans('userinterface.titles.EDIT_PRIVILEGE'))
 @else
 	<?php
-		$ruta='privileges.store';
+		$sRoute='privileges.store';
 	?>
 	@section('title', trans('userinterface.titles.CREATE_PRIVILEGE'))
 @endif
-	<?php $ruta2='privileges.index' ?>
+	<?php $sRoute2='privileges.index' ?>
 
 @section('content')
 

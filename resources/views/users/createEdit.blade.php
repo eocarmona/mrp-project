@@ -1,17 +1,17 @@
 @extends('front.mainCapturaEdicion')
 @if(isset($user))
 	<?php
-			$ruta='users.update';
+			$sRoute='users.update';
 			$aux=$user;
 	?>
 	@section('title', trans('userinterface.titles.EDIT_USER'))
 @else
 	<?php
-		$ruta='users.store';
+		$sRoute='users.store';
 	?>
 	@section('title', trans('userinterface.titles.CREATE_USER'))
 @endif
-	<?php $ruta2='users.index' ?>
+	<?php $sRoute2='users.index' ?>
 
 @section('content')
 

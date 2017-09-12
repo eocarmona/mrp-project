@@ -7,7 +7,7 @@
 @section('title', trans('userinterface.titles.LIST_USERS'))
 
 @section('content')
-	<?php $ruta="users"?>
+	<?php $sRoute="users"?>
 	@section('create')
 		@include('front.templates.create')
 	@endsection

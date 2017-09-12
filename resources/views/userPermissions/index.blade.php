@@ -3,7 +3,7 @@
 @section('title', trans('userinterface.titles.LIST_ASSIGNAMENTS'))
 
 @section('content')
-	<?php $ruta="userPermissions"?>
+	<?php $sRoute="userPermissions"?>
 	@section('create')
 		@include('front.templates.create')
 	@endsection

@@ -1,17 +1,17 @@
 @extends('front.mainCapturaEdicion')
 @if(isset($permission))
 	<?php
-			$ruta='permissions.update';
+			$sRoute='permissions.update';
 			$aux=$permission;
 	?>
 	@section('title', trans('userinterface.titles.EDIT_PERMISSION'))
 @else
 	<?php
-		$ruta='permissions.store';
+		$sRoute='permissions.store';
 	?>
 	@section('title', trans('userinterface.titles.CREATE_PERMISSION'))
 @endif
-	<?php $ruta2='permissions.index' ?>
+	<?php $sRoute2='permissions.index' ?>
 
 @section('content')
 

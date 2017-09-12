@@ -1,17 +1,17 @@
 @extends('front.mainCapturaEdicion')
 @if(isset($branch))
 	<?php
-			$ruta = 'mrp.branches.update';
+			$sRoute = 'mrp.branches.update';
 			$aux = $branch;
 	?>
 	@section('title', trans('userinterface.titles.EDIT_BRANCH'))
 @else
 	<?php
-		$ruta='mrp.branches.store';
+		$sRoute='mrp.branches.store';
 	?>
 	@section('title', trans('userinterface.titles.CREATE_BRANCH'))
 @endif
-	<?php $ruta2 = 'mrp.branches.index' ?>
+	<?php $sRoute2 = 'mrp.branches.index' ?>
 
 @section('content')
 

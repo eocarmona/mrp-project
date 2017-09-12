@@ -37,14 +37,16 @@ class MrpAddMrpYearMonthsTable extends Migration {
           SUtil::reconnectDataBase($this->sConnection, $this->bDefault, $this->sHost, $this->sDataBase, $this->sUser, $this->sPassword);
 
           Schema::connection($this->sConnection)->create('mrp_year_months', function (blueprint $table) {
-          	$table->integer('year_id')->unsigned();
-          	$table->increments('id_month');
+          	$table->increments('id_y_month');
+          	$table->integer('id_month');
           	$table->boolean('is_closed');
           	$table->boolean('is_deleted');
+          	$table->integer('year_id')->unsigned();
           	$table->integer('created_by_id')->unsigned();
           	$table->integer('updated_by_id')->unsigned();
           	$table->timestamps();
 
+          	$table->unique(['id_month', 'year_id']);
           	$table->foreign('year_id')->references('id_year')->on('mrp_years')->onDelete('cascade');
           	$table->foreign('created_by_id')->references('id')->on(DB::connection(Config::getConnSys())->getDatabaseName().'.'.'users')->onDelete('cascade');
           	$table->foreign('updated_by_id')->references('id')->on(DB::connection(Config::getConnSys())->getDatabaseName().'.'.'users')->onDelete('cascade');

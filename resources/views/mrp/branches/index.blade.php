@@ -7,7 +7,7 @@
 @section('title', trans('userinterface.titles.LIST_BRANCHES'))
 
 @section('content')
-	<?php $ruta="mrp.branches"?>
+	<?php $sRoute="mrp.branches"?>
 	@section('create')
 		@include('front.templates.create')
 	@endsection

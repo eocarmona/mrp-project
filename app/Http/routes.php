@@ -179,6 +179,23 @@ Route::group(['middleware' => ['auth']], function() {
         'as' => 'mrp.years.activate'
       ]);
 
+      Route::get('months/{year}/edit/{month}',[
+        'uses' => 'SMRP\SMonthsController@edit',
+        'as' => 'mrp.months.edit'
+      ]);
+      Route::get('months/{year}/update/{month}',[
+        'uses' => 'SMRP\SMonthsController@edit',
+        'as' => 'mrp.months.update'
+      ]);
+      Route::get('months/{year}/index',[
+        'uses' => 'SMRP\SMonthsController@index',
+        'as' => 'mrp.months.index'
+      ]);
+      Route::put('months/{year}/update',[
+        'uses' => 'SMRP\SMonthsController@Update',
+        'as' => 'mrp.months.update'
+      ]);
+
     });
 
 	});

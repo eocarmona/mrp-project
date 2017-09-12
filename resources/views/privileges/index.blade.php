@@ -3,7 +3,7 @@
 @section('title', trans('userinterface.titles.LIST_PRIVILEGES'))
 
 @section('content')
-	<?php $ruta="privileges"?>
+	<?php $sRoute="privileges"?>
 	@section('create')
 		@include('front.templates.create')
 	@endsection
