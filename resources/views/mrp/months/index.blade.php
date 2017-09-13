@@ -26,7 +26,7 @@
 						@endif
 					</td>
 					<td>
-						<a href="{{ route('mrp.months.edit', ['year' => $month->year_id, 'month' => $month->id_month]) }}" data-toggle = "editar" title="{{ trans('userinterface.tooltips.EDIT') }}"
+						<a href="{{ route('mrp.months.edit', $month->id_y_month) }}" data-toggle = "editar" title="{{ trans('userinterface.tooltips.EDIT') }}"
 																												style="visibility: {{ App\SUtils\SValidation::isRendered(\Config::get('scsys.OPERATION.EDIT'), $actualUserPermission, $month->created_by_id) }};"
 																												class="btn btn-info">
 							<span class="glyphicon glyphicon-pencil" aria-hidden = "true"/>

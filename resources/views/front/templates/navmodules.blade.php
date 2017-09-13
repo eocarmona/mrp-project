@@ -2,6 +2,7 @@
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('userinterface.MODULES') }} <span class="caret"></span></a>
     <ul class="dropdown-menu">
+      <li><a href="{{ route('mrp.home') }}">{{ trans('mrp.MODULE') }}</a></li>
       <li><a href="{{ route('mms.home') }}">{{ trans('mms.MODULE') }}</a></li>
       <li><a href="{{ route('qms.home') }}">{{ trans('qms.MODULE') }}</a></li>
       <li><a href="{{ route('wms.home') }}">{{ trans('wms.MODULE') }}</a></li>

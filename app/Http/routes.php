@@ -149,6 +149,12 @@ Route::group(['middleware' => ['auth']], function() {
 //****************************************/ Mrp /*************************
     Route::group(['prefix' => 'mrp'], function () {
 
+      Route::get('/home',[
+  			'as' => 'mrp.home',
+  			'uses' => 'SMRP\SMRPController@Home'
+  		]);
+      Route::resource('central','SMRP\SMRPController');
+
       Route::resource('companies','SMRP\SMrpCompaniesController');
       Route::get('companies/{id}/destroy',[
         'uses' => 'SMRP\SMrpCompaniesController@Destroy',

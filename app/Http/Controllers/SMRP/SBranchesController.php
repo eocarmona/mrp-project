@@ -9,6 +9,7 @@ use App\SMRP\SBranch;
 use App\SMRP\SMrpCompany;
 use App\SUtils\SValidation;
 use App\SUtils\SUtil;
+use App\SUtils\SMenu;
 
 class SBranchesController extends Controller {
 
@@ -19,8 +20,10 @@ class SBranchesController extends Controller {
     public function __construct()
     {
          $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.VIEW').','.\Config::get('scperm.VIEW_CODE.BRANCHES'));
+
+         $oMenu = new SMenu(\Config::get('scperm.MODULES.MRP'), 'navbar-mrp');
+         session(['menu' => $oMenu]);
          $this->middleware('mdmenu:'.(session()->has('menu') ? session('menu')->getMenu() : \Config::get('scsys.UNDEFINED')));
-         $this->sClassNav = 'navbar-green';
 
          $this->oCurrentUserPermission = SUtil::getTheUserPermission(!\Auth::check() ? \Config::get('scsys.UNDEFINED') : \Auth::user()->id, \Config::get('scperm.VIEW_CODE.BRANCHES'));
 

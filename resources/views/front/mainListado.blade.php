@@ -37,15 +37,13 @@
 			</section>
 
 		</div>
-		<div class="col-md-4">
-		</div>
 	</div>
 	</div>
 	</div>
-
 @include('front.templates.scripts')
-
 </body>
+<br />
+<br />
 <footer>
 	@include('front.templates.footer')
 </footer>

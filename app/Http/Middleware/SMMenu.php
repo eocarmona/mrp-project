@@ -12,6 +12,7 @@ class SMMenu
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
      * @param  int $iModule can be:
+     *          \Config::get('scsys.MODULES.MRP')
      *          \Config::get('scsys.MODULES.MMS')
      *          \Config::get('scsys.MODULES.QMS')
      *          \Config::get('scsys.MODULES.WMS')
@@ -21,8 +22,19 @@ class SMMenu
     public function handle($request, Closure $next, $iModule)
     {
       switch ($iModule) {
+        case \Config::get('scsys.MODULES.MRP'):
+          \Menu::make('sMenu', function($menu) {
+              $menu->add('Home', array('route' => 'mms.home'));
+              $menu->add(trans('mrp.MRP'), '')->nickname(trans('mrp.MRP'));
+              $menu->get(trans('mrp.MRP'))->add(trans('mrp.MRP_COMPANIES'), array('route' => 'mrp.companies.index'));
+              $menu->get(trans('mrp.MRP'))->add(trans('mrp.BRANCHES'), array('route' => 'mrp.branches.index'));
+              $menu->get(trans('mrp.MRP'))->add(trans('mrp.ACG_YEAR_PER'), array('route' => 'mrp.years.index'));
+          });
+
+          break;
+
         case \Config::get('scsys.MODULES.MMS'):
-          \Menu::make('sMenu', function($menu){
+          \Menu::make('sMenu', function($menu) {
               $menu->add(' ');
               $menu->add('Home', array('route' => 'mms.home'));
               $menu->add('About',    'about');
@@ -33,7 +45,7 @@ class SMMenu
           break;
 
         case \Config::get('scsys.MODULES.QMS'):
-          \Menu::make('sMenu', function($menu){
+          \Menu::make('sMenu', function($menu) {
               $menu->add(' ');
               $menu->add('Home', array('route' => 'qms.home'));
               $menu->add('About',    'about');
@@ -45,12 +57,9 @@ class SMMenu
           break;
 
         case \Config::get('scsys.MODULES.WMS'):
-          \Menu::make('sMenu', function($menu){
+          \Menu::make('sMenu', function($menu) {
               $menu->add(' ');
               $menu->add(trans('userinterface.HOME'), array('route' => 'wms.home'));
-              $menu->add(trans('mrp.MRP'), 'what-we-do')->nickname(trans('mrp.MRP'));
-              $menu->get(trans('mrp.MRP'))->add(trans('mrp.MRP_COMPANIES'), array('route' => 'mrp.companies.index'));
-              $menu->get(trans('mrp.MRP'))->add(trans('mrp.BRANCHES'), array('route' => 'mrp.branches.index'));
               $menu->add(trans('wms.CONFIG'), 'what-we-do')->nickname(trans('wms.CONFIG'));
               $menu->get(trans('wms.CONFIG'))->add(trans('wms.CONFIG'), 'what-we-do');
               $menu->get(trans('wms.CONFIG'))->add(trans('wms.CONFIG'), 'what-we-do');
@@ -73,7 +82,7 @@ class SMMenu
           break;
 
         case \Config::get('scsys.MODULES.TMS'):
-          \Menu::make('sMenu', function($menu){
+          \Menu::make('sMenu', function($menu) {
               $menu->add(' ');
               $menu->add('Home', array('route' => 'tms.home'));
               $menu->add('About',    'about');

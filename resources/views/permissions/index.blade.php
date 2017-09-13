@@ -1,5 +1,9 @@
 @extends('front.mainListado')
 
+@section('menu')
+	@include('front.templates.menu')
+@endsection
+
 @section('title', trans('userinterface.titles.LIST_PERMISSIONS'))
 
 @section('content')

@@ -24,6 +24,8 @@
     </div>
   </div>
 </div>
+<br />
+<br />
 
 <!-- Scripts -->
 @include('front.templates.scripts')

@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\SMRP\SMrpCompany;
 use App\SUtils\SUtil;
+use App\SUtils\SMenu;
 
 class SMrpCompaniesController extends Controller
 {
@@ -16,6 +17,8 @@ class SMrpCompaniesController extends Controller
     public function __construct()
     {
        $this->middleware('mdpermission:'.\Config::get('scperm.TP_PERMISSION.VIEW').','.\Config::get('scperm.VIEW_CODE.MRP_COMPANIES'));
+       $oMenu = new SMenu(\Config::get('scperm.MODULES.MRP'), 'navbar-mrp');
+       session(['menu' => $oMenu]);
        $this->middleware('mdmenu:'.(session()->has('menu') ? session('menu')->getMenu() : \Config::get('scsys.UNDEFINED')));
 
        $this->oCurrentUserPermission = SUtil::getTheUserPermission(!\Auth::check() ? \Config::get('scsys.UNDEFINED') : \Auth::user()->id, \Config::get('scperm.VIEW_CODE.MRP_COMPANIES'));

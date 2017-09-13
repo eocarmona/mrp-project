@@ -29,7 +29,7 @@ class SWarehousesController extends Controller
      */
     public function home()
     {
-        return view('mms.index')->with('sClassNav', (session()->has('menu') ? session('menu')->getClassNav() : ''));
+        return view('wms.index')->with('sClassNav', (session()->has('menu') ? session('menu')->getClassNav() : ''));
     }
 
 

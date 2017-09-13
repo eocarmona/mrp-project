@@ -5,7 +5,6 @@
       <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
-      <li><a href="{{ route('start') }}">{{ trans('userinterface.COMPANIES') }}</a></li>
       <li><a href="{{ route('auth.logout') }}">{{ trans('userinterface.EXIT') }}</a></li>
     </ul>
   </li>
