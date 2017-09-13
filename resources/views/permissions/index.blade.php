@@ -14,6 +14,7 @@
 	<table data-toggle="table" class="table table-striped">
 		<thead>
 			<th data-sortable="true">{{ trans('userinterface.labels.NAME') }}</th>
+			<th data-sortable="true">{{ trans('userinterface.labels.TYPE') }}</th>
 			<th data-sortable="true">{{ trans('userinterface.labels.STATUS') }}</th>
 			<th data-sortable="true">{{ trans('userinterface.labels.ACTION') }}</th>
 		</thead>
@@ -21,6 +22,7 @@
 			@foreach($permissions as $permission)
 				<tr>
 					<td>{{ $permission->name }}</td>
+					<td>{{ $permission->permissionType->name }}</td>
 					<td>
 						@if (! $permission->is_deleted)
 								<span class="label label-success">{{ trans('userinterface.labels.ACTIVE') }}</span>

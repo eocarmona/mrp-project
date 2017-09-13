@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\SSys\SPermission;
+use App\SSys\SPermissionType;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
@@ -30,7 +31,7 @@ class SPermissionsController extends Controller
     public function index(Request $request)
     {
         $this->iFilter = $request->filter == null ? \Config::get('scsys.FILTER.ACTIVES') : $request->filter;
-        $permissions = SPermission::Search($request->name, $this->iFilter)->orderBy('name', 'ASC')->paginate(4);
+        $permissions = SPermission::Search($request->name, $this->iFilter)->orderBy('name', 'ASC')->paginate(10);
 
         return view('permissions.index')
                     ->with('permissions', $permissions)
@@ -45,14 +46,16 @@ class SPermissionsController extends Controller
      */
     public function create()
     {
-      if (SValidation::canCreate($this->oCurrentUserPermission->privilege_id))
-        {
-          return view('permissions.createEdit');
-        }
-        else
-        {
-          return redirect()->route('notauthorized');
-        }
+        if (SValidation::canCreate($this->oCurrentUserPermission->privilege_id))
+          {
+              $lPermissionTypes = SPermissionType::orderBy('name', 'ASC')->lists('name', 'id_type');
+
+              return view('permissions.createEdit')->with('types', $lPermissionTypes);
+          }
+          else
+          {
+              return redirect()->route('notauthorized');
+          }
     }
 
     /**
@@ -91,10 +94,12 @@ class SPermissionsController extends Controller
     public function edit($id)
     {
         $permission = SPermission::find($id);
+        $lPermissionTypes = SPermissionType::orderBy('name', 'ASC')->lists('name', 'id_type');
 
         if (SValidation::canEdit($this->oCurrentUserPermission->privilege_id) || SValidation::canAuthorEdit($this->oCurrentUserPermission->privilege_id, $permission->created_by_id))
         {
           return view('permissions.createEdit')->with('permission', $permission)
+                                               ->with('types', $lPermissionTypes)
                                                 ->with('iFilter', $this->iFilter);
         }
         else
@@ -123,7 +128,6 @@ class SPermissionsController extends Controller
     public function activate(Request $request, $id)
     {
         $permission = SPermission::find($id);
-
         $permission->fill($request->all());
         $permission->is_deleted = \Config::get('scsys.STATUS.ACTIVE');
 
