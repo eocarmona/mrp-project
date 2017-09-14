@@ -1,14 +1,20 @@
 @extends('front.mainCapturaEdicion')
 @if(isset($user))
 	<?php
-			$sRoute='users.update';
 			$aux = $user;
+			if ($bIsCopy)
+			{
+				$sRoute = 'users.store';
+			}
+			else
+			{
+				$sRoute = 'users.update';
+			}
 	?>
 	@section('title', trans('userinterface.titles.EDIT_USER'))
 @else
 	<?php
 		$sRoute = 'users.store';
-		$aux = $user;
 	?>
 	@section('title', trans('userinterface.titles.CREATE_USER'))
 @endif
@@ -28,7 +34,7 @@
 			{!! Form::email('email',isset($user) ? $user->email : null ,['class'=>'form-control', 'placeholder' => trans('userinterface.placeholders.EMAIL'), 'required']) !!}
 		</div>
 
-		@if(! isset($user))
+		@if(isset($user) && $bIsCopy)
 			<div class="form-group">
 				{!! Form::label('password', trans('userinterface.labels.PASSWORD')) !!}
 				{!! Form::password('password', ['class'=>'form-control', 'placeholder' => trans('userinterface.placeholders.PASSWORD'), 'required']) !!}

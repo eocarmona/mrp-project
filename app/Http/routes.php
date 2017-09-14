@@ -61,6 +61,10 @@ Route::group(['middleware' => ['auth']], function() {
 			'uses' => 'SUsersController@Activate',
 			'as' => 'users.activate'
 		]);
+		Route::get('users/{id}/copy', [
+			'uses' => 'SUsersController@Copy',
+			'as' => 'users.copy'
+		]);
 		Route::get('users/{id}/destroy',[
 			'uses' => 'SUsersController@Destroy',
 			'as' => 'users.destroy'

@@ -153,6 +153,26 @@ class SUsersController extends Controller
     }
 
     /**
+     * Inactive the registry setting the flag is_deleted to true
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     */
+    public function copy(Request $request, $id)
+    {
+        $user = User::find($id);
+
+        $userCopy = clone $user;
+        $userCopy->id = 0;
+        $types = SUserType::orderBy('name', 'ASC')->lists('name', 'id_type');
+
+        return view('users.createEdit')->with('user', $userCopy)
+                                      ->with('iFilter', $this->iFilter)
+                                      ->with('bIsCopy', true)
+                                      ->with('types', $types);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id

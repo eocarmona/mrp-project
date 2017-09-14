@@ -1,8 +1,15 @@
 @if(isset($aux))
-	{!! Form::open(['route' => [$sRoute, $aux], 'method' => 'PUT']) !!}
-	@yield('content')
-	<div class="form-group" align="right">
-		{!! Form::submit(trans('actions.EDIT'), ['class' => 'btn btn-primary']) !!}
+	@if ($bIsCopy)
+		{!! Form::open(['route' => [$sRoute, $aux], 'method' => 'POST']) !!}
+		@yield('content')
+		<div class="form-group" align="right">
+			{!! Form::submit(trans('actions.SAVE'), ['class' => 'btn btn-primary']) !!}
+	@else
+		{!! Form::open(['route' => [$sRoute, $aux], 'method' => 'PUT']) !!}
+		@yield('content')
+		<div class="form-group" align="right">
+			{!! Form::submit(trans('actions.EDIT'), ['class' => 'btn btn-primary']) !!}
+	@endif
 @else
 	{!! Form::open(['route' => $sRoute, 'method' => 'POST']) !!}
 	@yield('content')
