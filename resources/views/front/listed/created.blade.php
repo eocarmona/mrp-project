@@ -1,0 +1,1 @@
+{{ $oRegistry->created_at }}

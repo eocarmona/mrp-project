@@ -2,12 +2,13 @@
 @if(isset($user))
 	<?php
 			$sRoute='users.update';
-			$aux=$user;
+			$aux = $user;
 	?>
 	@section('title', trans('userinterface.titles.EDIT_USER'))
 @else
 	<?php
-		$sRoute='users.store';
+		$sRoute = 'users.store';
+		$aux = $user;
 	?>
 	@section('title', trans('userinterface.titles.CREATE_USER'))
 @endif

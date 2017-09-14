@@ -14,6 +14,16 @@ class SYear extends Model {
     return $this->hasMany('App\SMRP\SMonth', 'year_id', 'id_year');
   }
 
+  public function userCreation()
+  {
+    return $this->belongsTo('App\User', 'created_by_id');
+  }
+
+  public function userUpdate()
+  {
+    return $this->belongsTo('App\User', 'updated_by_id');
+  }
+
   public function scopeSearch($query, $id, $iFilter)
   {
       switch ($iFilter) {

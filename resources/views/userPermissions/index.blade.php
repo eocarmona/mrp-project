@@ -30,7 +30,7 @@
 								$sRoute = 'userPermissions';
 								$iRegistryId = $userPermission->id_usr_per;
 						?>
-						@include('templates.options')
+						@include('front.listed.options')
 					</td>
 				</tr>
 			@endforeach

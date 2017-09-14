@@ -13,6 +13,10 @@
 			<th>{{ trans('userinterface.labels.RFC') }}</th>
 			<th>{{ trans('userinterface.labels.STATUS') }}</th>
 			<th>{{ trans('userinterface.labels.ACTION') }}</th>
+			<th>{{ trans('userinterface.labels.CREATED_BY') }}</th>
+			<th>{{ trans('userinterface.labels.CREATED') }}</th>
+			<th>{{ trans('userinterface.labels.UPDATED_BY') }}</th>
+			<th>{{ trans('userinterface.labels.UPDATED') }}</th>
 		</thead>
 		<tbody>
 			@foreach($companies as $company)
@@ -32,7 +36,19 @@
 								$sRoute = 'mrp.companies';
 								$iRegistryId = $company->id_company;
 						?>
-						@include('templates.options')
+						@include('front.listed.options')
+					</td>
+					<td>
+						@include('front.listed.createdUs')
+					</td>
+					<td>
+						@include('front.listed.created')
+					</td>
+					<td>
+						@include('front.listed.updatedUs')
+					</td>
+					<td>
+						@include('front.listed.updated')
 					</td>
 				</tr>
 			@endforeach

@@ -24,6 +24,16 @@ class SCompany extends Model {
       return $this->hasOne('App\SMRP\SMrpCompany');
     }
 
+    public function userCreation()
+    {
+      return $this->belongsTo('App\User', 'created_by_id');
+    }
+
+    public function userUpdate()
+    {
+      return $this->belongsTo('App\User', 'updated_by_id');
+    }
+
     public function scopeSearch($query, $name, $iFilter)
     {
         switch ($iFilter) {

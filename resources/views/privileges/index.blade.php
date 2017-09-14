@@ -34,7 +34,7 @@
 								$sRoute = 'privileges';
 								$iRegistryId = $privilege->id_privilege;
 						?>
-						@include('templates.options')
+						@include('front.listed.options')
 					</td>
 				</tr>
 			@endforeach

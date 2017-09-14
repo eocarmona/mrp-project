@@ -73,7 +73,7 @@ class SUsersController extends Controller
         $user->password = bcrypt($request->password);
         $user->created_by_id =\Auth::user()->id;
         $user->updated_by_id =\Auth::user()->id;
-#        dd($user);
+
         $user->save();
         Flash::success(trans('messages.REG_CREATED'));
 
@@ -132,6 +132,12 @@ class SUsersController extends Controller
         return redirect()->route('users.index');
     }
 
+    /**
+     * Inactive the registry setting the flag is_deleted to true
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     */
     public function activate(Request $request, $id)
     {
       $user = User::find($id);

@@ -97,6 +97,8 @@
 											'CLOSED' => 'Cerrado',
 											'CODE' => 'Código',
 											'COMPANY' => 'Empresa',
+											'CREATED' => 'Creado',
+											'CREATED_BY' => 'Cr. por',
 											'DB_HOST' => 'Host',
 											'DB_NAME' => 'Nombre de base de datos',
 											'DB_PASS' => 'Contraseña',
@@ -119,6 +121,8 @@
 											'YEAR' => 'Año',
 											'MONTH' => 'Mes',
 											'PERIOD' => 'Periodo',
+											'UPDATED' => 'Modificado',
+											'UPDATED_BY' => 'Mod. por',
 
 										]
 

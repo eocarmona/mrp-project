@@ -1,0 +1,1 @@
+{{ $oRegistry->userUpdate->username }}

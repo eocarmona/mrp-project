@@ -36,7 +36,7 @@
 								$sRoute = 'permissions';
 								$iRegistryId = $permission->id_permission;
 						?>
-						@include('templates.options')
+						@include('front.listed.options')
 					</td>
 				</tr>
 			@endforeach

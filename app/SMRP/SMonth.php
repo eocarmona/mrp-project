@@ -9,22 +9,33 @@ class SMonth extends Model {
   protected $table = "mrp_year_months";
   protected $fillable = ['id_month', 'is_closed', 'is_deleted', 'year_id', 'created_by_id', 'updated_by_id'];
 
+
+    public function __construct($iMonth = 0, $iYearId = 0)
+    {
+        $attributes = array();
+        $attributes['id_month'] = $iMonth;
+        $attributes['is_closed'] = false;
+        $attributes['is_deleted'] = false;
+        $attributes['year_id'] = $iYearId;
+        $attributes['created_by_id'] = \Auth::user()->id;
+        $attributes['updated_by_id'] = \Auth::user()->id;
+
+        parent::__construct($attributes);
+    }
+
   public function year()
   {
     return $this->belongsTo('App\SMRP\SYear');
   }
 
-  public function __construct($iMonth = 0, $iYearId = 0)
+  public function userCreation()
   {
-      $attributes = array();
-      $attributes['id_month'] = $iMonth;
-      $attributes['is_closed'] = false;
-      $attributes['is_deleted'] = false;
-      $attributes['year_id'] = $iYearId;
-      $attributes['created_by_id'] = \Auth::user()->id;
-      $attributes['updated_by_id'] = \Auth::user()->id;
+    return $this->belongsTo('App\User', 'created_by_id');
+  }
 
-      parent::__construct($attributes);
+  public function userUpdate()
+  {
+    return $this->belongsTo('App\User', 'updated_by_id');
   }
 
   public function scopeSearch($query, $iFilter, $iYearId)

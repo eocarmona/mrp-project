@@ -17,6 +17,10 @@
 			<th>{{ trans('userinterface.labels.NAME') }}</th>
 			<th>{{ trans('userinterface.labels.STATUS') }}</th>
 			<th>{{ trans('userinterface.labels.ACTION') }}</th>
+			<th>{{ trans('userinterface.labels.CREATED_BY') }}</th>
+			<th>{{ trans('userinterface.labels.CREATED') }}</th>
+			<th>{{ trans('userinterface.labels.UPDATED_BY') }}</th>
+			<th>{{ trans('userinterface.labels.UPDATED') }}</th>
 		</thead>
 		<tbody>
 			@foreach($branches as $branch)
@@ -36,7 +40,19 @@
 								$sRoute = 'mrp.branches';
 								$iRegistryId = $branch->id_branch;
 						?>
-						@include('templates.options')
+						@include('front.listed.options')
+					</td>
+					<td>
+						@include('front.listed.createdUs')
+					</td>
+					<td>
+						@include('front.listed.created')
+					</td>
+					<td>
+						@include('front.listed.updatedUs')
+					</td>
+					<td>
+						@include('front.listed.updated')
 					</td>
 				</tr>
 			@endforeach
