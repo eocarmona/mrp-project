@@ -1,5 +1,5 @@
 @if(isset($aux))
-	@if ($bIsCopy)
+	@if (isset($bIsCopy))
 		{!! Form::open(['route' => [$sRoute, $aux], 'method' => 'POST']) !!}
 		@yield('content')
 		<div class="form-group" align="right">

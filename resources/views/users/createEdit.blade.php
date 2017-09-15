@@ -2,7 +2,7 @@
 @if(isset($user))
 	<?php
 			$aux = $user;
-			if ($bIsCopy)
+			if (isset($bIsCopy))
 			{
 				$sRoute = 'users.store';
 			}
@@ -34,7 +34,7 @@
 			{!! Form::email('email',isset($user) ? $user->email : null ,['class'=>'form-control', 'placeholder' => trans('userinterface.placeholders.EMAIL'), 'required']) !!}
 		</div>
 
-		@if(isset($user) && $bIsCopy)
+		@if(!isset($user) || (isset($user) && isset($bIsCopy)))
 			<div class="form-group">
 				{!! Form::label('password', trans('userinterface.labels.PASSWORD')) !!}
 				{!! Form::password('password', ['class'=>'form-control', 'placeholder' => trans('userinterface.placeholders.PASSWORD'), 'required']) !!}
