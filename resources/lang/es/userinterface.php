@@ -91,7 +91,7 @@
 
 		'labels'			 	=>  [
 
-											'ACTION' => 'Acción',
+											'ACTION' => 'Acciones',
 											'ACTIVE' => 'Activo',
 											'ACTIVES' => 'Activos',
 											'ALL' => 'Todos',

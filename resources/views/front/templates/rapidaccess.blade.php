@@ -7,7 +7,7 @@
               <div class='col-md-1'>
               </div>
               <div class='col-md-5'>
-                <img align='right' style='width: 90%; height: 90%'' src='".$image."' alt='' class='img-rounded'>
+                <img align='right' style=' width: 90%; height: 90%'' src='".$image."' alt='' class='img-rounded'>
               </div>
               <div class='col-md-5'>
                 <div class='row'>

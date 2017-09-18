@@ -11,7 +11,7 @@
 	@section('create')
 		@include('front.templates.create')
 	@endsection
-	<table data-toggle="table" class="table table-responsive">
+	<table data-toggle="table" class="table table-condensed">
 		<thead>
 			<th data-sortable="true">{{ trans('userinterface.labels.NAME') }}</th>
 			<th data-sortable="true">{{ trans('userinterface.labels.EMAIL') }}</th>
